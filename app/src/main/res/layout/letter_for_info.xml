@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_large"
+    android:layout_marginRight="@dimen/spacing_large"
+    android:layout_marginTop="@dimen/spacing_mid_offset"
+    android:background="@color/general_for_bg_light_f7"
+    android:orientation="horizontal"
+    android:paddingBottom="@dimen/spacing_mid_small_8dp"
+    android:paddingLeft="@dimen/spacing_mid_small_8dp"
+    android:paddingRight="@dimen/spacing_mid_small_8dp"
+    android:paddingTop="@dimen/spacing_mid_small_8dp">
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:includeFontPadding="false"
+        android:maxLines="2"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/size_icon_assist"
+        tools:text="ssssssssss"/>
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/letter_info_image_widht"
+        android:layout_height="@dimen/letter_info_image_height"
+        android:layout_marginLeft="@dimen/letter_info_image_left_marging"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/common_ico_bottom_add"/>
+
+
+</LinearLayout>

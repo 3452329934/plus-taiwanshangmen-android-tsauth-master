@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:src="@mipmap/logo_send_thinksns"
+        android:scaleType="centerInside"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/select_dynamic_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="@dimen/spacing_bigger_large"
+        android:paddingEnd="@dimen/spacing_bigger_large"
+        android:paddingBottom="@dimen/spacing_huge"/>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_send_dynamic_close_container"
+        android:layout_gravity="bottom"
+        android:background="@color/white">
+
+        <View
+            style="@style/style_divider_horizontal_light"
+            />
+
+        <ImageView
+            android:id="@+id/im_close_dynamic"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/send_dynamic_close_button_img"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/divider_line"
+            android:paddingEnd="@dimen/spacing_big_large"
+            android:paddingLeft="@dimen/spacing_big_large"
+            android:paddingRight="@dimen/spacing_big_large"
+            android:paddingStart="@dimen/spacing_big_large"
+            android:scaleType="centerInside"
+            android:src="@mipmap/ico_close"/>
+
+    </FrameLayout>
+</LinearLayout>

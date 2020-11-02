@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <solid android:color="#eeffffff"/>
+    <corners
+        android:bottomLeftRadius="@dimen/ts_chat_item_iamge_raduis"
+        android:bottomRightRadius="@dimen/ts_chat_item_iamge_raduis"
+        android:topLeftRadius="0dp"
+        android:topRightRadius="0dp"/>
+</shape>

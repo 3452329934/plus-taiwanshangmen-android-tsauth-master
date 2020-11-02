@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_large"
+    android:layout_marginRight="@dimen/spacing_large"
+    android:layout_marginTop="@dimen/spacing_mid_offset"
+    android:minHeight="@dimen/letter_post_image_height"
+    android:background="@color/general_for_bg_light_f7"
+    android:orientation="vertical"
+    android:paddingRight="@dimen/spacing_mid_small_6dp">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/letter_post_image_widht"
+        android:layout_height="@dimen/letter_post_image_height"
+        android:scaleType="centerCrop"
+        android:layout_marginRight="@dimen/letter_post_image_marginRight"
+        tools:src="@mipmap/common_ico_bottom_add"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/spacing_normal"
+        android:layout_toRightOf="@+id/iv_image"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_content_comment"
+            tools:text="ss"/>
+
+        <TextView
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small_4dp"
+            android:drawablePadding="@dimen/spacing_small"
+            android:includeFontPadding="false"
+            android:textColor="@color/normal_for_assist_text"
+            android:textSize="@dimen/size_content_comment"
+            tools:text="ss"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

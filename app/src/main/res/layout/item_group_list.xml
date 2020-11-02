@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/circle_detail_head_iamge_height"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/spacing_mid">
+
+    <com.zhiyicx.baseproject.widget.imageview.FilterImageView
+        android:id="@+id/uv_group_head"
+        android:layout_width="@dimen/circle_member_head"
+        android:layout_height="@dimen/circle_member_head"
+        android:layout_marginRight="@dimen/spacing_mid"/>
+
+    <TextView
+        android:ellipsize="middle"
+        android:id="@+id/tv_group_name"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_mid"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/size_rank_number"
+        android:singleLine="true"/>
+
+    <TextView
+        android:id="@+id/tv_onwer_tag"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:background="@drawable/shape_bg_circle_radus_gold"
+        android:paddingBottom="@dimen/spacing_tiny"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingRight="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_tiny"
+        android:text="@string/chat_group_owner"
+        android:textColor="@color/general_for_bg_light"
+        android:textSize="@dimen/size_icon_assist"/>
+
+</LinearLayout>

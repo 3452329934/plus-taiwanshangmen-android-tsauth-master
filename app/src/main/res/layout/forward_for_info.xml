@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_large"
+    android:layout_marginRight="@dimen/spacing_large"
+    android:layout_marginTop="@dimen/spacing_mid_offset"
+    android:background="@color/general_for_bg_light_f7"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_normal"
+    android:paddingLeft="@dimen/spacing_normal"
+    android:paddingRight="@dimen/spacing_mid"
+    android:paddingTop="@dimen/spacing_normal">
+
+    <ImageView
+        android:id="@+id/iv_forward_image"
+        android:layout_width="@dimen/forward_info_image_widht"
+        android:layout_height="@dimen/forward_info_image_height"
+        android:layout_marginLeft="@dimen/spacing_mid"
+        android:layout_alignParentRight="true"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/common_ico_bottom_add"/>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_toLeftOf="@+id/iv_forward_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tv_forward_name"
+            style="@style/style_chat_content"
+            android:layout_width="wrap_content"
+            android:lineSpacingMultiplier="1"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textSize="@dimen/size_content_assist"
+            tools:text="2222222"/>
+
+        <TextView
+            android:id="@+id/tv_forward_content"
+            style="@style/style_chat_content"
+            android:layout_width="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:ellipsize="end"
+            android:lineSpacingMultiplier="1"
+            android:maxLines="1"
+            android:textColor="@color/normal_for_assist_text"
+            android:textSize="@dimen/size_icon_assist"
+            tools:text="222"/>
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

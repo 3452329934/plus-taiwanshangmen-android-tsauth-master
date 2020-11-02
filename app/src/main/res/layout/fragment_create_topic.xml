@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.wcy.overscroll.OverScrollLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ol_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:overScrollMode="never">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <!--@dimen/create_topic_pic_hint_height-->
+            <FrameLayout
+                android:id="@+id/fl_topic_cover_container"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/create_topic_pic_hint_height"
+                android:background="@color/general_for_bg_light">
+
+                <ImageView
+                    android:id="@+id/iv_topic_cover"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"/>
+
+                <TextView
+                    android:id="@+id/tv_topic_cover"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_margin="@dimen/spacing_mid"
+                    android:drawablePadding="@dimen/spacing_normal_8dp"
+                    android:drawableStart="@mipmap/ico_topic_camera"
+                    android:gravity="center"
+                    android:text="@string/create_topic_pic_hint"
+                    android:textColor="@color/masked_color"
+                    android:textSize="@dimen/size_content"/>
+
+                <View
+                    android:id="@+id/v_transparent"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_gravity="bottom"
+                    android:background="#90000000"
+                    android:visibility="gone"/>
+            </FrameLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@drawable/normal_linear_driver"/>
+
+            <EditText
+                android:id="@+id/et_topic_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large"
+                android:background="@null"
+                android:hint="@string/create_topic_title_hint"
+                android:maxLength="10"
+                android:textColor="@color/important_for_content"
+                android:textColorHint="@color/general_for_hint"
+                android:textSize="@dimen/size_primary_title"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_18"
+                android:layout_marginRight="@dimen/margin_18"
+                android:background="@drawable/normal_linear_driver"/>
+
+            <EditText
+                android:id="@+id/et_topic_desc"
+                style="@style/style_edit_cursor"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/spacing_large"
+                android:background="@null"
+                android:maxLength="@integer/introduce_input_max_size"
+                android:gravity="top|start|left"
+                android:hint="@string/create_topic_dec_hint"
+                android:scrollbars="vertical"
+                android:text=""
+                android:textColor="@color/important_for_content"
+                android:textColorHint="@color/general_for_hint"
+                android:textSize="@dimen/size_sub_title"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_marginLeft="@dimen/margin_18"
+                android:layout_marginRight="@dimen/margin_18"
+                android:layout_marginTop="@dimen/spacing_bigger_large"
+                android:background="@drawable/normal_linear_driver"/>
+
+            <TextView
+                android:id="@+id/tv_limit_tip"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/spacing_mid"
+                android:layout_marginTop="@dimen/spacing_normal"
+                android:gravity="right"
+                android:textColor="@color/normal_for_assist_text"
+                android:textSize="@dimen/size_note_assist"
+                android:text="0/50"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_warning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_margin="@dimen/spacing_large"
+            android:gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/general_for_hint"
+            android:textSize="@dimen/size_icon_assist"/>
+    </FrameLayout>
+</com.wcy.overscroll.OverScrollLayout>

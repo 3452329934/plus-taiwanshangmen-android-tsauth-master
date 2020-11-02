@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:zhiyi="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.zhiyicx.thinksnsplus.widget.IconTextView
+        android:id="@+id/it_item"
+        android:layout_gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/spacing_normal"
+        android:paddingRight="@dimen/spacing_normal"
+        android:paddingTop="@dimen/spacing_big_large"
+        zhiyi:itv_direction="TOP"
+        zhiyi:itv_gap="@dimen/spacing_normal"
+        zhiyi:itv_icon="@mipmap/ico_video"
+        zhiyi:itv_iconHeight="@dimen/send_dynamic_send_button_img"
+        zhiyi:itv_iconWidth="@dimen/send_dynamic_send_button_img"
+        zhiyi:itv_text="@string/send_vidoe"
+        zhiyi:itv_textColor="@color/dyanmic_send"
+        zhiyi:itv_textSize="@dimen/size_content_assist"/>
+</FrameLayout>

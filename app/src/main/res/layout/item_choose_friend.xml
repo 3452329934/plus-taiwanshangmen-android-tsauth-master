@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/circle_detail_head_iamge_height"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingLeft="@dimen/spacing_mid">
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+        android:id="@+id/uv_head"
+        android:layout_width="@dimen/circle_member_head"
+        android:layout_height="@dimen/circle_member_head"
+        android:layout_marginRight="@dimen/spacing_mid"
+        app:ts_avatare_size="@dimen/headpic_for_list"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/spacing_mid"
+        android:ellipsize="middle"
+        android:singleLine="true"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/size_rank_number"/>
+
+</LinearLayout>

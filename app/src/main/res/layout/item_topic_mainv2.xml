@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/topic_main_item_height_v2"
+    android:paddingLeft="@dimen/spacing_mid"
+    android:paddingRight="@dimen/spacing_mid">
+
+    <com.zhiyicx.thinksnsplus.widget.imageview.RectImageView
+        android:id="@+id/iv_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_main_item_height_v2"
+        android:scaleType="centerCrop"
+        app:type="round"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/item_topic_mian_shadow"
+        android:gravity="center">
+
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:textColor="@android:color/white"
+            android:includeFontPadding="false"
+            android:textSize="@dimen/size_primary_title"
+            tools:text="我失去了什么，又得到了什么"/>
+
+        <TextView
+            android:id="@+id/tv_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_name"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/spacing_mid"
+            android:paddingLeft="@dimen/spacing_mid"
+            android:visibility="gone"
+            android:paddingTop="@dimen/spacing_small"
+            android:paddingRight="@dimen/spacing_mid"
+            android:paddingBottom="@dimen/spacing_small"
+            android:text="+ 关注"
+            android:background="@drawable/shape_bg_button_black_with_alpha"
+            android:textColor="@color/white"
+            android:textSize="@dimen/size_content_comment"
+            />
+    </RelativeLayout>
+
+</FrameLayout>

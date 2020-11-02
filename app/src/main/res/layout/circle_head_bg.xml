@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/user_head_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipChildren="false"
+    android:clipToPadding="false"
+    android:orientation="vertical"
+    app:layout_collapseMode="parallax"
+    app:layout_collapseParallaxMultiplier="0.8">
+
+    <ImageView
+        android:id="@+id/uc_zoomiv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:tag="overScroll"/>
+
+    <ImageView
+        android:id="@+id/iv_background_cover_top_hint"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:rotation="180"
+        android:layout_gravity="center_horizontal|top"
+        android:background="@mipmap/pic_mask_zy"
+        android:scaleType="centerCrop"/>
+
+</FrameLayout>

@@ -1,0 +1,262 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.greenrobot.greendao'
+apply plugin: 'jacoco' //测试报告
+apply from: "$rootDir/jacocoCoverage.gradle"
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'com.mob.sdk'
+
+MobSDK {
+    appKey "28e8fc9e17062"
+    appSecret "52ab6e11f4cfe29b29057be4d16c7cc0"
+    MobLink {
+        uriScheme "moblink://com.zhiyicx.thinksnsplus"
+        appLinkHost "https://a1g9.ulml.mob.com"
+    }
+}
+jacoco {
+    toolVersion = "0.7.8"
+    reportsDir = file("$buildDir/customJacocoReportDir")
+}
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    compileSdkVersion gConfig["compileSdkVersion"]
+    buildToolsVersion gConfig["buildToolsVersion"]
+    defaultConfig {
+//       this for AnnotationProcessors
+//        javaCompileOptions {
+//            kaptOptions {
+//                includeCompileClasspath true
+//            }
+//        }
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath false
+            }
+        }
+        applicationId gConfig["applicationId"]
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+        versionCode gConfig["versionCode"]
+        versionName gConfig["versionName"]
+        testInstrumentationRunner gConfig.testDependencies.androidJUnitRunner
+
+        ndk {
+            //选择要添加的对应cpu类型的.so库。
+            abiFilters 'armeabi', 'armeabi-v7a', 'armeabi-v8a', 'x86', 'x86_64', 'mips', 'mips64'
+        }
+        // 极光推送
+        manifestPlaceholders = [
+                JPUSH_PKGNAME: applicationId,
+                JPUSH_APPKEY : "f0f9b22e116b6d60a278073f", //JPush上注册的包名对应的appkey.
+                JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
+        ]
+
+        multiDexEnabled true
+
+        resConfigs "en", "zh-rCN"
+    }
+
+    signingConfigs {
+        release {
+            storeFile file('../thinksnsplus.jks')
+            storePassword 'thinksnsplus2017'
+            keyAlias 'thinksnsplus'
+            keyPassword 'thinksnsplus2017'
+        }
+        debug {
+            storeFile file('../thinksnsplus.jks')
+            storePassword 'thinksnsplus2017'
+            keyAlias 'thinksnsplus'
+            keyPassword 'thinksnsplus2017'
+        }
+    }
+
+    buildTypes {
+
+        debug {
+            minifyEnabled false
+            shrinkResources false
+            useProguard true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+            testCoverageEnabled false  // false 的时候 debug 才能看到成员变量的数据，true 用来导出代码覆盖率数据
+        }
+        release {
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+    /**
+     * 保证 testDebug 执行完成后会执行 testRelease
+     * ｛@Link http://g.co/androidstudio/not-mocked｝
+     *
+     */
+    testOptions {
+        unitTests.all {
+            // All the usual Gradle options.
+            jvmArgs '-XX:MaxPermSize=256m'
+            // resolve "Method ... not mocked."
+            jacoco {
+                includeNoLocationClasses = true
+            }
+        }
+        unitTests.returnDefaultValues = true
+
+    }
+
+    lintOptions {
+        quiet true
+        abortOnError false
+        ignoreWarnings true
+        abortOnError false
+        disable "ResourceType"
+        disable 'InvalidPackage'            //Some libraries have issues with this.
+        disable 'OldTargetApi'
+        //Lint gives this warning but SDK 20 would be Android L Beta.
+        disable 'IconDensities'             //For testing purpose. This is safe to remove.
+        disable 'IconMissingDensityFolder'  //For testing purpose. This is safe to remove.
+        // if true, only report errors.
+        ignoreWarnings true
+        lintConfig file("lint.xml")
+    }
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+        pickFirst 'lib/x86/libsqlcipher.so'
+        pickFirst 'lib/armeabi/libsqlcipher.so'
+        pickFirst 'lib/armeabi-v7a/libsqlcipher.so'
+        pickFirst 'lib/armeabi-v8a/libsqlcipher.so'
+        pickFirst 'lib/x86_64/libsqlcipher.so'
+        pickFirst 'lib/mips/libsqlcipher.so'
+        pickFirst 'lib/mips64/libsqlcipher.so'
+    }
+    dexOptions {
+        dexInProcess true
+        preDexLibraries true
+        javaMaxHeapSize "6g"//越大越好
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+}
+// for kotlin extension
+androidExtensions {
+    experimental = true
+}
+
+greendao {
+    /**
+     * daoPackage 生成的DAO，DaoMaster和DaoSession的包名。默认是实体的包名。
+     * targetGenDir 生成源文件的路径。默认源文件目录是在build目录中的(build/generated/source/greendao)。
+     * generateTests 设置是否自动生成单元测试。
+     * targetGenDirTest 生成的单元测试的根目录。
+     */
+    schemaVersion 118 // update on 2018-11-20 10:13:22
+    daoPackage 'com.zhiyicx.thinksnsplus.data.beans'
+    generateTests true
+    //targetGenDir 'src/main/java'
+}
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        mavenCentral()
+
+    }
+    dependencies {
+        classpath 'me.tatarka:gradle-retrolambda:3.6.1'
+    }
+}
+configurations.all {
+    resolutionStrategy {
+        force 'com.android.support:support-fragment:28.0.0'
+        force 'com.android.support:support-annotations:28.0.0'
+        force 'com.google.code.findbugs:jsr305:1.3.9'
+    }
+}
+dependencies {
+    def dataDependences = rootProject.ext.dataDependencies
+    def supportDependences = rootProject.ext.sdksoupportDependencies
+    def testDependences = rootProject.ext.testDependencies
+
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    //support
+    implementation supportDependences.appcompatV7
+    implementation supportDependences.paletteV7
+    implementation supportDependences.supportV4
+    implementation supportDependences.constraintLayout
+    // Test
+    testImplementation testDependences.junit
+    androidTestImplementation(testDependences.espresso) {
+        exclude module: 'support-annotations'
+        exclude group: 'javax.inject'
+    }
+    androidTestImplementation testDependences.espressoIntent
+    androidTestImplementation(testDependences.espressoRecyclerView) {
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
+    testImplementation testDependences.runner
+
+    // Dagger dependencies
+    implementation dataDependences.dagger
+    implementation dataDependences.daggerCompiler
+    kapt dataDependences.daggerCompiler
+    // Butterknife
+    implementation dataDependences.butterknife
+    kapt dataDependences.butterknifeApt
+    // Project
+    implementation project(':baseproject')
+    implementation project(':media-cache')
+    implementation project(':banner')
+    implementation project(':tspay')
+    implementation project(':contacts')
+    implementation project(':download')
+    implementation (project(':appupdate')){
+        transitive = false
+    }
+    // markdown编辑器
+    implementation project(':richtexteditorlib')
+    // database
+    implementation dataDependences.greendao
+
+    // jpush
+    implementation dataDependences.jiguangJpush
+    implementation dataDependences.jiguangJcore
+    implementation dataDependences.greendaoSqlcipher
+    implementation dataDependences.markdownView
+//    implementation(name: 'lint-library-release', ext: 'aar')
+    implementation dataDependences.flowlayout
+    implementation dataDependences.ankoCommon
+    //    implementation dataDependences.bigImageViewer
+    //    implementation dataDependences.bigGlideImageLoader 内部s使用了glide4.5
+    //    implementation project(':GlideImageLoader')
+    implementation 'com.loopeer.lib:shadow:0.0.4-beta3'
+    implementation dataDependences.playServicesGcm
+    implementation dataDependences.firebase
+    implementation 'com.huawei.android.hms:push:2.6.3.301'
+}
+/** 升级gradle后下面两个包冲突*/
+configurations {
+    all*.exclude module: 'jsr305'
+    all*.exclude module: 'javapoet'
+}
+// 此行添加在文件末尾
+apply plugin: 'com.google.gms.google-services'

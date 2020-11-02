@@ -1,0 +1,63 @@
+apply plugin: 'com.android.library'
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    compileSdkVersion gConfig["compileSdkVersion"]
+    buildToolsVersion gConfig["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+        versionCode gConfig["versionCode"]
+        versionName gConfig["versionName"]
+        testInstrumentationRunner gConfig.testDependencies.androidJUnitRunner
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath true
+            }
+        }
+    }
+    buildTypes {
+        release {
+            buildConfigField "boolean", "USE_DOMAIN_SWITCH", "true"  // 域名切换开关
+            buildConfigField "boolean", "USE_LOG", "true"            // 日志开关
+            buildConfigField "boolean", "USE_CANARY", "false"         // Learcanary 内存检查开关
+            buildConfigField "boolean", "USE_ADVERT", "true"         // 广告开关
+            buildConfigField "boolean", "USE_TOLL", "true"           // 置顶功能开关
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            buildConfigField "boolean", "USE_DOMAIN_SWITCH", "true"  // 域名切换开关
+            buildConfigField "boolean", "USE_LOG", "true"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            buildConfigField "boolean", "USE_ADVERT", "false"
+            buildConfigField "boolean", "USE_TOLL", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+        // if true, only report errors.
+        ignoreWarnings true
+        checkReleaseBuilds false
+    }
+
+}
+
+
+dependencies {
+    def supportDependences = rootProject.ext.sdksoupportDependencies
+    def dataDependences = rootProject.ext.dataDependencies
+    def gConfig = rootProject.extensions.getByName("ext")
+    def androidSupportSdkVersion = gConfig["androidSupportSdkVersion"]
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    implementation supportDependences.supportV4
+    implementation dataDependences.glide
+    implementation dataDependences.rxJava
+    implementation dataDependences.rxAndroid
+    implementation "com.android.support:appcompat-v7:${androidSupportSdkVersion}"
+    implementation "com.android.support:support-emoji-bundled:${androidSupportSdkVersion}"
+    implementation "com.android.support:support-emoji-appcompat:${androidSupportSdkVersion}"
+    api 'com.huawei.android.hms:push:2.6.3.301'
+    api dataDependences.hyphenate
+}

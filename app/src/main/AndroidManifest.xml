@@ -1,0 +1,1112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.zhiyicx.thinksnsplus">
+
+    <uses-permission android:name="android.permission.READ_CONTACTS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_LOGS"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.WRITE_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <!--环信相关permission-->
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+
+    <!--华为手机更新应用桌面角标需要的权限-->
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.READ"/>
+    <uses-permission android:name="com.sec.android.provider.badge.permission.WRITE"/>
+
+    <!--8.0机型安装权限-->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+
+    <!-- 接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 ${PACKAGE_NAME} 要替换上您应用的包名 -->
+    <permission
+        android:name="${applicationId}.permission.PROCESS_PUSH_MSG"
+        android:protectionLevel="signatureOrSystem"/>
+    <!--接收PUSH TOKEN的广播以及PUSH消息需要定义该权限 ${PACKAGE_NAME} 要替换上您应用的包名 -->
+    <uses-permission android:name="${applicationId}.permission.PROCESS_PUSH_MSG"/>
+
+
+    <permission
+        android:name="${applicationId}.permission.MIPUSH_RECEIVE"
+        android:protectionLevel="signature"/>
+    <!--这里com.xiaomi.mipushdemo改成app的包名-->
+    <uses-permission android:name="${applicationId}.permission.MIPUSH_RECEIVE"/>
+    <!--这里com.xiaomi.mipushdemo改成app的包名-->
+    <!-- allowBackup =true  用于 adb backup 与 adb restore;发布后需要关闭，保证数据安全  android:persistent="true" 应用保持活与自启动 -->
+    <!--android:networkSecurityConfig="@xml/network_security_config" targetSdkVersion 28 以及上在Android 9.0 及以上系统上不支持http请求（未加密链接），需加上这句（明文链接）方可使用-->
+    <application
+        android:name=".base.AppApplication"
+        android:allowBackup="false"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/icon"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:persistent="true"
+        android:supportsRtl="true"
+        android:theme="@style/TSTheme"
+
+        tools:replace="android:allowBackup">
+        <meta-data
+            android:name="android.max_aspect"
+            android:value="2.4"/>
+        <meta-data
+            android:name="android.notch_support"
+            android:value="true"/>
+
+        <!-- mi push -->
+
+        <!--小米推送相关配置-->
+        <service
+            android:name="com.xiaomi.push.service.XMJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE"
+            android:process=":pushservice"/>
+
+        <service
+            android:name="com.xiaomi.push.service.XMPushService"
+            android:enabled="true"
+            android:process=":pushservice"/>
+
+        <service
+            android:name="com.xiaomi.mipush.sdk.PushMessageHandler"
+            android:enabled="true"
+            android:exported="true"/>
+        <service
+            android:name="com.xiaomi.mipush.sdk.MessageHandleService"
+            android:enabled="true"/>
+
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.NetworkStatusReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name="com.xiaomi.push.service.receivers.PingReceiver"
+            android:exported="false"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.xiaomi.push.PING_TIMER"/>
+            </intent-filter>
+        </receiver>
+
+
+        <receiver
+
+            android:name="com.hyphenate.chat.EMMipushReceiver"
+
+            android:exported="true"
+
+            tools:ignore="ExportedReceiver">
+
+            <intent-filter>
+
+                <action android:name="com.xiaomi.mipush.RECEIVE_MESSAGE" />
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="com.xiaomi.mipush.MESSAGE_ARRIVED" />
+
+            </intent-filter>
+
+            <intent-filter>
+
+                <action android:name="com.xiaomi.mipush.ERROR" />
+
+            </intent-filter>
+
+        </receiver>
+
+        <!-- mi push end -->
+
+        <!--华为push      value的值“xxx”用实际申请的应用ID替换，来源于开发者联盟网站应用的服务详情。-->
+        <meta-data
+            android:name="com.huawei.hms.client.appid"
+            android:value="appid=100623125">
+        </meta-data>
+        <!--      BridgeActivity定义了HMS-SDK中一些跳转所需要的透明页面。-->
+        <activity
+            android:name="com.huawei.hms.activity.BridgeActivity"
+            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent">
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent"/>
+        </activity>
+
+        <activity
+            android:name="com.huawei.updatesdk.service.otaupdate.AppUpdateActivity"
+            android:configChanges="orientation|screenSize"
+            android:exported="false"
+            android:theme="@style/upsdkDlDialog">
+
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent.NoTitleBar"/>
+        </activity>
+        <!--AppUpdateActivity和PackageInstallActivity是应用自升级接口所需要使用的页面。-->
+        <activity
+            android:name="com.huawei.updatesdk.support.pm.PackageInstallerActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:exported="false"
+            android:theme="@style/upsdkDlDialog">
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent"/>
+        </activity>
+        <!--“xxx.xxx.xxx”用实际的应用包名替换-->
+        <provider
+            android:name="com.huawei.hms.update.provider.UpdateProvider"
+            android:authorities="${applicationId}.hms.update.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        </provider>
+        <!--“xxx.xxx.xxx”用实际的应用包名替换-->
+
+        <provider
+            android:name="com.huawei.updatesdk.fileprovider.UpdateSdkFileProvider"
+            android:authorities="${applicationId}.updateSdk.fileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+        </provider>
+        <!-- 应用下载服务 -->
+        <service
+            android:name="com.huawei.updatesdk.service.deamon.download.DownloadService"
+            android:exported="false"/>
+
+        <!-- 接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（注册、透传消息、通知栏点击事件）广播，
+              此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
+              参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer${PACKAGE_NAME} 要替换上您应用的包名-->
+        <receiver
+            android:name=".jpush.MyHuaWeiPushReceiver"
+            android:permission="${applicationId}.permission.PROCESS_PUSH_MSG">
+            <intent-filter>
+                <!-- 必须,用于接收token -->
+                <action android:name="com.huawei.android.push.intent.REGISTRATION"/>
+                <!-- 必须, 用于接收透传消息 -->
+                <action android:name="com.huawei.android.push.intent.RECEIVE"/>
+                <!-- 必须, 用于接收通知栏消息点击事件 此事件不需要开发者处理，只需注册就可以-->
+                <action android:name="com.huawei.intent.action.PUSH_DELAY_NOTIFY"/>
+            </intent-filter>
+        </receiver>
+
+        <!--如下2个通知会在以后的版本中逐渐废弃
+            接入HMSSDK PUSH模块需要注册，第三方相关 :接收Push消息（点击通知栏或通知栏上的按钮后触发onEvent回调、查看push通道是否连接）广播，此receiver类需要开发者自己创建并继承com.huawei.hms.support.api.push.PushReceiver类，
+参考示例代码中的类：com.huawei.hmsagent.HuaweiPushRevicer${PACKAGE_NAME} 要替换上您应用的包名-->
+        <receiver android:name=".jpush.My2HuaWeiPushReceiver">
+            <intent-filter>
+                <!-- 用于点击通知栏或通知栏上的按钮后触发onEvent回调 -->
+                <action android:name="com.huawei.android.push.intent.CLICK"/>
+                <!-- 查看push通道是否连接, 不查看则不需要 -->
+                <action android:name="com.huawei.intent.action.PUSH_STATE"/>
+            </intent-filter>
+        </receiver>
+        <!--接入HMSSDK PUSH模块需要注册该service，不需要开发者处理-->
+        <service
+            android:name="com.huawei.hms.support.api.push.service.HmsMsgService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":pushservice">
+            <intent-filter>
+                <action android:name="com.huawei.push.msg.NOTIFY_MSG"/>
+                <action android:name="com.huawei.push.msg.PASSBY_MSG"/>
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name="com.huawei.android.hms.agent.common.HMSAgentActivity"
+            android:configChanges="orientation|locale|screenSize|layoutDirection|fontScale"
+            android:excludeFromRecents="true"
+            android:exported="false"
+            android:hardwareAccelerated="true"
+            android:theme="@android:style/Theme.Translucent">
+            <meta-data
+                android:name="hwc-theme"
+                android:value="androidhwext:style/Theme.Emui.Translucent"/>
+        </activity>
+
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="${applicationId}.ThinkSNSFileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true"
+            tools:replace="android:authorities">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"
+                tools:replace="android:resource"/>
+        </provider>
+
+        <activity
+            android:name=".modules.guide.GuideActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:theme="@style/BackGroundLauncherTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+
+            </intent-filter>
+
+            <!-- 使用URI Scheme方案 -->
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="moblink" android:host="com.zhiyicx.thinksnsplus" />
+            </intent-filter>
+
+            <!-- 使用App Links方案 -->
+            <!--实测 小米5s机型，应用被终结后不能唤醒，弃用-->
+            <!--<intent-filter android:autoVerify="true">-->
+                <!--<action android:name="android.intent.action.VIEW" />-->
+                <!--<category android:name="android.intent.category.DEFAULT"/>-->
+                <!--<category android:name="android.intent.category.BROWSABLE"/>-->
+                <!--<data android:scheme="http" android:host="a1g9.ulml.mob.com" />-->
+                <!--<data android:scheme="https" android:host="a1g9.ulml.mob.com" />-->
+            <!--</intent-filter>-->
+        </activity>
+
+        <activity-alias
+            android:name=".GuideActivity"
+            android:enabled="false"
+            android:icon="@mipmap/icon2"
+            android:label="@string/app_name"
+            android:targetActivity=".modules.guide.GuideActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity-alias>
+
+        <activity
+            android:name=".modules.usertag.EditUserTagActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.register.RegisterActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+        <activity
+            android:name=".modules.home.HomeActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        </activity>
+        <activity
+            android:name=".modules.settings.SettingsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.password.changepassword.ChangePasswordActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.settings.account.AccountManagementActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.settings.bind.AccountBindActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.settings.init_password.InitPasswordActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.password.findpassword.FindPasswordActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.login.LoginActivity"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="${applicationId}.intent.action.LOGIN"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+
+                <data android:mimeType="text/plain"/>
+            </intent-filter>
+        </activity>
+        <!-- 第三方登陆相关 -->
+        <activity
+            android:name=".modules.third_platform.choose_bind.ChooseBindActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.third_platform.bind.BindOldAccountActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.third_platform.complete.CompleteAccountActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".modules.settings.aboutus.CustomWEBActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.edit_userinfo.UserInfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        </activity>
+        <activity
+            android:name=".modules.edit_userinfo.location.search.LocationSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.edit_userinfo.location.LocationRecommentActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.home.message.messagecomment.MessageCommentActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.home.message.messagelike.MessageLikeActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.crop.CropActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.photopicker.PhotoAlbumListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.photopicker.PhotoAlbumDetailsActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.photopicker.PhotoViewActivity"
+            android:theme="@style/TransParentTheme">
+        </activity>
+
+        <!-- 低配手机用不起硬件加速 比如 HUAWEI Che1-CL10 Android 6.0.1 API 23 -->
+        <activity
+            android:name=".modules.gallery.GalleryActivity"
+            android:hardwareAccelerated="false"
+            android:launchMode="singleTop"
+            android:theme="@style/TransParentTheme">
+        </activity>
+
+        <activity
+            android:name=".modules.follow_fans.FollowFansListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity
+            android:name=".modules.information.infomain.InfoActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.information.infodetails.InfoDetailsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.information.dig.InfoDigListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.information.infochannel.ChannelActivity"
+            android:theme="@style/activity_topin_bottomout"/>
+        <activity
+            android:name=".modules.information.infosearch.SearchActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.dynamic.send.SendDynamicActivity"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize">
+        </activity>
+        <activity
+            android:name=".modules.wallet.WalletActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.wallet.rule.WalletRuleActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.dynamic.detail.DynamicDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+        <activity
+            android:name=".modules.dynamic.detail.dig_list.DigListActivity"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.personal_center.PersonalCenterActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:hardwareAccelerated="false"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        </activity>
+        <!-- 查看头像页 -->
+        <activity
+            android:name=".modules.personal_center.portrait.HeadPortraitViewActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".modules.wallet.recharge.RechargeActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden">
+        </activity>
+
+        <!-- 问答相关 -->
+        <activity
+            android:name=".modules.q_a.qa_main.qa_container.QA_InfoContainerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <!-- 硬件加速用于mx3 自定义输入控件绘制卡顿 -->
+        <activity
+            android:name=".modules.q_a.publish.question.PublishQuestionActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.q_a.publish.add_topic.AddTopicActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.q_a.reward.QARewardActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.q_a.reward.expert_search.ExpertSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <activity
+            android:name=".modules.q_a.detail.topic.TopicDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.q_a.detail.question.QuestionDetailActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.q_a.detail.question.comment.QuestionCommentActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.q_a.mine.container.MyQuestionActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <!-- 认证相关页面 -->
+        <activity
+            android:name=".modules.certification.input.CertificationInputActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.certification.send.SendCertificationActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.certification.detail.CertificationDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <!-- 排行榜相关页面 -->
+        <activity
+            android:name=".modules.rank.main.container.RankIndexActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.rank.type_list.RankTypeListActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <receiver android:name="android.support.v4.media.session.MediaButtonReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.MEDIA_BUTTON"/>
+            </intent-filter>
+        </receiver>
+
+        <!-- #########################################      IM 相关       ################################ -->
+        <service android:name="com.zhiyicx.imsdk.service.SocketService"/>
+        <!-- 网络监听广播 -->
+        <receiver
+            android:name="com.zhiyicx.imsdk.receiver.NetChangeReceiver"
+            android:label="NetworkConnection">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <!--网络切换-->
+                <action android:name="android.intent.action.USER_PRESENT"/>
+                <!--例如锁屏被唤醒-->
+            </intent-filter>
+        </receiver>
+        <!-- 极光推送 -->
+        <receiver
+            android:name=".jpush.JpushReceiver"
+            android:enabled="true"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/> <!-- Required  用户注册SDK的intent -->
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/> <!-- Required  用户接收SDK消息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/> <!-- Required  用户接收SDK通知栏信息的intent -->
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/> <!-- Required  用户打开自定义通知栏的intent -->
+                <action android:name="cn.jpush.android.intent.CONNECTION"/> <!-- 接收网络变化 连接/断开 since 1.6.3 -->
+                <category android:name="${applicationId}"/>
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name=".modules.music_fm.music_play.MusicPlayService"
+            android:exported="true"
+            tools:ignore="ExportedService">
+            <intent-filter>
+                <action android:name="android.media.browse.MediaBrowserService"/>
+            </intent-filter>
+        </service>
+
+        <!-- 新浪分享 -->
+        <activity
+            android:name=".WBShareActivity"
+            android:configChanges="keyboardHidden|orientation"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="com.sina.weibo.sdk.action.ACTION_SDK_REQ_ACTIVITY"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <!-- 微信分享结果类 -->
+        <activity
+            android:name=".wxapi.WXEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+
+        <!-- Ping++ 支付SDK -->
+        <!--<activity-->
+        <!--android:name="com.pingplusplus.android.PaymentActivity"-->
+        <!--android:configChanges="orientation|keyboardHidden|navigation|screenSize"-->
+        <!--android:launchMode="singleTop"-->
+        <!--android:theme="@android:style/Theme.Translucent.NoTitleBar">-->
+        <!--</activity>-->
+
+
+        <!-- 微信支付 -->
+        <!-- 1.需要将以下"替换成自己 APK 的包名"换成在微信平台上注册填写的包名 -->
+        <!-- 2.WxPayEntryActivity 这个类在 SDK 内部实现，开发者不需要额外实现该类 -->
+        <!--<activity-alias-->
+        <!--android:name="${applicationId}.wxapi.WXPayEntryActivity"-->
+        <!--android:exported="true"-->
+        <!--android:targetActivity="com.pingplusplus.android.PaymentActivity"/>-->
+        <!-- 支付宝 -->
+        <activity
+            android:name="com.alipay.sdk.app.H5PayActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+        <activity
+            android:name="com.alipay.sdk.auth.AuthActivity"
+            android:configChanges="orientation|keyboardHidden|navigation"
+            android:exported="false"
+            android:screenOrientation="behind">
+        </activity>
+
+        <activity
+            android:name=".modules.collect.CollectListActivity"
+            android:screenOrientation="portrait"/>
+
+        <activity
+            android:name=".modules.wallet.withdrawals.WithdrawalsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.wallet.withdrawals.list_detail.WithdrawalsDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.wallet.bill_detail.BillDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.dynamic.send.dynamic_type.SelectDynamicTypeActivity"
+            android:launchMode="singleTop"
+            android:theme="@style/DynamciSelectTheme"/>
+        <activity
+            android:name=".modules.dynamic.send.picture_toll.PictureTollActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.dynamic.tollcomment.DynamicCommentTollActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.dynamic.topdynamic_comment.DynamicCommentTopActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.wallet.bill.BillActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.feedback.FeedBackActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.home.message.messagereview.MessageReviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.q_a.QA_Activity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.q_a.search.container.QASearchContainerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan">
+        </activity>
+
+        <activity
+            android:name=".modules.wallet.reward.RewardActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.wallet.reward.list.RewardListActivity"
+            android:screenOrientation="portrait"/>
+
+        <!-- 资讯发布 -->
+        <activity
+            android:name=".modules.information.publish.addinfo.AddInfoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateHidden">
+        </activity>
+        <activity
+            android:name=".modules.information.publish.addinfo.AddInfoCategoryActivity"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait">
+        </activity>
+        <activity
+            android:name=".modules.information.publish.uploadcover.UploadCoverActivity"
+            android:hardwareAccelerated="true"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.wallet.sticktop.StickTopActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:hardwareAccelerated="true"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+
+        <activity
+            android:name=".modules.q_a.detail.answer.AnswerDetailsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <!-- 找人 -->
+        <activity
+            android:name=".modules.findsomeone.contianer.FindSomeOneContainerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.findsomeone.search.name.SearchSomeOneActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.findsomeone.contacts.ContactsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.q_a.detail.answer.dig_list.AnswerDigListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.information.my_info.ManuscriptsActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+
+        <activity
+            android:name=".modules.draftbox.DraftBoxActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.q_a.publish.create_topic.CreateTopicActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.register.rule.UserRuleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.main.CircleMainActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.circle.detailv2.CircleDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.circle.create.CreateCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.all_circle.container.AllCircleContainerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.circle.mine.container.MyCircleContainerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.create.types.CircleTyepsActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.create.location.CircleLocationActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.detailv2.post.CirclePostDetailActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.mine.joined.MyJoinedCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.detailv2.dig.DigListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.search.container.CircleSearchContainerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize"/>
+        <activity
+            android:name=".modules.circle.manager.members.MembersListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.report.ReportActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateVisible"/>
+        <activity
+            android:name=".modules.circle.manager.earning.CircleEarningActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.manager.report.ReportReviewActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.manager.earning.record.EarningListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.search.onlypost.CirclePostSearchActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity
+            android:name=".modules.circle.manager.permission.PermissionActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.publish.choose_circle.ChooseCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.manager.members.attorn.AttornCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.publish.PublishPostActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.create.rule.RuleForCreateCircleActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.circle.manager.members.blacklist.BlackListActivity"
+            android:screenOrientation="portrait"/>
+        <!--扫码相关页面-->
+        <activity
+            android:name=".modules.home.mine.scan.ScanCodeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.home.mine.mycode.MyCodeActivity"
+            android:screenOrientation="portrait"/>
+        <!--我的好友列表-->
+        <activity
+            android:name=".modules.home.mine.friends.MyFriendsListActivity"
+            android:screenOrientation="portrait"/>
+        <!--搜索好友-->
+        <activity
+            android:name=".modules.home.mine.friends.search.SearchFriendsActivity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".modules.q_a.publish.detail.EditeQuestionDetailActivity"/>
+        <activity android:name=".modules.q_a.answer.EditeAnswerDetailActivity"/>
+        <activity
+            android:name=".modules.information.publish.detail.EditeInfoDetailActivity"
+            android:screenOrientation="portrait"/>
+        <!--我的积分-->
+        <activity
+            android:name=".modules.wallet.integration.mine.MineIntegrationActivity"
+            android:screenOrientation="portrait"/>
+        <!--开发中的默认页面-->
+        <activity
+            android:name=".modules.develop.TSDevelopActivity"
+            android:screenOrientation="portrait"/>
+        <!--积分充值-->
+        <activity
+            android:name=".modules.wallet.integration.recharge.IntegrationRechargeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan"/>
+        <!--积分详情-->
+        <activity
+            android:name=".modules.wallet.integration.detail.IntegrationDetailActivity"
+            android:screenOrientation="portrait"/>
+        <!--积分充值提现记录-->
+        <activity
+            android:name=".modules.wallet.integration.detail.recharge_withdrawal.IntegrationRWDetailActivity"
+            android:screenOrientation="portrait"/>
+        <!--积分提取-->
+        <activity
+            android:name=".modules.wallet.integration.withdrawal.IntegrationWithdrawalsActivity"
+            android:screenOrientation="portrait"/>
+
+        <!--系统通知页面-->
+        <activity
+            android:name=".modules.home.message.notifacationlist.NotificationActivity"
+            android:screenOrientation="portrait"/>
+        <!--环信的聊天页面-->
+        <activity
+            android:name=".modules.chat.ChatActivity"
+            android:hardwareAccelerated="true"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <!--发送位置-->
+        <activity
+            android:name=".modules.chat.location.look.LookLocationActivity"
+            android:screenOrientation="portrait"/>
+        <!--视频播放-->
+        <activity
+            android:screenOrientation="portrait"
+            android:name="com.hyphenate.easeui.ui.EaseShowVideoActivity"/>
+
+        <!--选择好友-->
+        <activity
+            android:name=".modules.chat.select.SelectFriendsActivity"
+            android:screenOrientation="portrait"/>
+        <!--选择视频-->
+        <activity
+            android:name=".modules.chat.video.ImageGridActivity"
+            android:screenOrientation="portrait"/>
+        <!--录制视频-->
+        <activity
+            android:name=".modules.chat.video.RecorderVideoActivity"
+            android:screenOrientation="portrait"/>
+        <!--查看文件-->
+        <activity
+            android:name="com.hyphenate.easeui.ui.EaseShowNormalFileActivity"
+            android:screenOrientation="portrait"/>
+        <!--单聊详情-->
+        <activity
+            android:name=".modules.chat.info.ChatInfoActivity"
+            android:screenOrientation="portrait"/>
+        <!--修改群名称-->
+        <activity
+            android:name=".modules.chat.edit.name.EditGroupNameActivity"
+            android:screenOrientation="portrait"/>
+        <!--修改群主-->
+        <activity
+            android:name=".modules.chat.edit.owner.EditGroupOwnerActivity"
+            android:screenOrientation="portrait"/>
+        <!--群管理页面-->
+        <activity
+            android:name=".modules.chat.edit.manager.GroupManagerActivity"
+            android:screenOrientation="portrait"/>
+        <!--群成员列表页面-->
+        <activity
+            android:name=".modules.chat.member.GroupMemberListActivity"
+            android:screenOrientation="portrait"/>
+        <!--视频通话页面-->
+        <activity
+            android:name=".modules.chat.call.video.VideoCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <!--语音通话页面-->
+        <activity
+            android:name=".modules.chat.call.voice.VoiceCallActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustNothing|stateAlwaysHidden"/>
+        <activity
+            android:name=".modules.shortvideo.record.RecordActivity"
+            android:theme="@style/DynamciSelectTheme"/>
+        <activity
+            android:name=".modules.shortvideo.videostore.VideoSelectActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.shortvideo.preview.PreviewActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Translucent"/>
+        <activity
+            android:name=".modules.shortvideo.clipe.TrimmerActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.shortvideo.cover.CoverActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.develop.maintenance.TSSystemMantenanceActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.settings.blacklist.BlackListActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".modules.home.message.messagegroup.MessageGroupActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".wxapi.WXPayEntryActivity"
+            android:exported="true"
+            android:launchMode="singleTop"/>
+        <!--聊天发送位置-->
+        <activity
+            android:name=".modules.chat.location.send.SendLocationActivity"
+            android:screenOrientation="portrait"/>
+        <!--聊天搜索位置-->
+        <activity
+            android:name=".modules.chat.location.search.SearchLocationActivity"
+            android:screenOrientation="portrait"/>
+        <!--聊天转发位置-->
+        <activity
+            android:name=".modules.chat.location.tofriends.ToFriendsActivity"
+            android:screenOrientation="portrait"/>
+        <!--话题详情-->
+        <activity
+            android:name=".modules.topic.detail.TopicDetailActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <!--话题入口-->
+        <activity
+            android:name=".modules.topic.main.TopicActivity"
+            android:screenOrientation="portrait"/>
+        <!--创建话题-->
+        <activity
+            android:name=".modules.topic.create.CreateTopicActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateAlwaysHidden"/>
+        <!--话题搜索-->
+        <activity
+            android:name=".modules.topic.search.SearchTopicActivity"
+            android:screenOrientation="portrait"/>
+        <!--参与话题的人-->
+        <activity
+            android:name=".modules.topic.detail.joined.JoinedUserActivity"
+            android:screenOrientation="portrait"/>
+        <!--全局搜索-->
+        <activity
+            android:name=".modules.search.container.SearchContainerActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <!--私信选择好友界面-->
+        <activity
+            android:name=".modules.chat.private_letter.ChooseFriendActivity"
+            android:screenOrientation="portrait"/>
+        <!--私信选择群聊-->
+        <activity
+            android:name=".modules.chat.private_letter.group.ChooseGroupActivity"
+            android:screenOrientation="portrait"/>
+        <!--私信新建会话-->
+        <activity
+            android:name=".modules.chat.private_letter.newconversation.NewConversationActivity"
+            android:screenOrientation="portrait"/>
+        <!--@选择用户-->
+        <activity
+            android:name=".modules.aaaat.AtUserActivity"
+            android:screenOrientation="portrait"/>
+        <!--@我的列表-->
+        <activity
+            android:name=".modules.home.message.messageat.MessageAtActivity"
+            android:screenOrientation="portrait"/>
+        <!--圈子预览-->
+        <activity
+            android:name=".modules.circle.pre.PreCircleActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"/>
+        <!--新的圈子详情页-->
+        <activity
+            android:name=".modules.circle.detailv2.v2.CircleDetailActivityV2"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".modules.music_fm.music_album_list.MusicListActivity"
+                  android:screenOrientation="portrait"/>
+
+        <!--音乐详情-->
+        <activity
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:name=".modules.music_fm.music_album_detail.MusicDetailActivity"/>
+
+        <!--音乐评论-->
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".modules.music_fm.music_comment.MusicCommentActivity"/>
+
+        <!--音乐播发-->
+        <activity
+            android:configChanges="orientation|screenSize|keyboardHidden"
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:screenOrientation="portrait"
+            android:name=".modules.music_fm.music_play.MusicPlayActivity"/>
+        <activity
+            android:screenOrientation="portrait"
+            android:name=".modules.music_fm.paided_music.MyMusicActivity"/>
+        <!-- 开机自启动服务 -->
+        <receiver android:name=".modules.chat.call.receiver.StartServiceReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </receiver>
+        <!--环信推送-->
+
+        <service android:name=".service.empush.EMFCMTokenRefreshService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+            </intent-filter>
+        </service>
+        <service android:name=".service.empush.EMFCMMSGService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
+    </application>
+
+</manifest>

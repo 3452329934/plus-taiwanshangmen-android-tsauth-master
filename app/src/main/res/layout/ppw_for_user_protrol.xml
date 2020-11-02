@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:id="@+id/ll_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:background="@drawable/bg_pop_pay_reading"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/spacing_large"
+        android:paddingTop="@dimen/spacing_normal_large"
+        android:paddingEnd="@dimen/spacing_large"
+        android:paddingBottom="@dimen/spacing_normal_large">
+
+        <TextView
+            android:id="@+id/ppw_center_titl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:text="@string/tips"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_content" />
+
+        <TextView
+            android:id="@+id/ppw_center_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:lineSpacingMultiplier="1.2"
+            android:text="@string/protrol_tip_content"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_content_comment" />
+
+        <TextView
+            android:id="@+id/ppw_center_attention"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.2"
+            android:text="阅读完整版《用户协议》和《隐私政策》"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_content_comment"
+            android:textStyle="bold" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="34dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ppw_center_item_left"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/shape_bg_circle_box_radus_gray"
+                android:gravity="center"
+                android:text="不同意"
+                android:textColor="@color/colorW3"
+                android:textSize="@dimen/size_content_assist" />
+
+            <TextView
+                android:id="@+id/ppw_center_item_right"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="@dimen/spacing_normal_large"
+                android:layout_weight="1"
+                android:background="@drawable/shape_bg_circle_theme"
+                android:gravity="center"
+                android:text="同意"
+                android:textColor="@color/white"
+                android:textSize="@dimen/size_content_assist" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>

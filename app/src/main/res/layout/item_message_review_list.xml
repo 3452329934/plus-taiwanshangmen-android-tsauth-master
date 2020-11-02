@@ -1,0 +1,190 @@
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:paddingLeft="@dimen/spacing_normal"
+    tools:context="com.zhiyicx.thinksnsplus.modules.home.HomeActivity">
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+        android:id="@+id/iv_headpic"
+        android:layout_width="@dimen/headpic_for_notification_28dp"
+        android:layout_height="@dimen/headpic_for_notification_28dp"
+        android:layout_marginRight="@dimen/spacing_mid"
+        android:layout_marginTop="@dimen/spacing_mid"
+        app:pressShape="circle"
+        app:ts_avatare_size="@dimen/headpic_for_assist"
+        tools:src="@mipmap/ic_launcher"/>
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacing_mid"
+        android:layout_toRightOf="@id/iv_headpic"
+        android:ellipsize="end"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:paddingRight="@dimen/spacing_normal"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/size_content_comment"
+        tools:text="张三 "/>
+
+    <com.zhiyicx.baseproject.widget.textview.SpanTextViewWithEllipsize
+        android:id="@+id/tv_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_time"
+        android:layout_toRightOf="@id/iv_headpic"
+        android:includeFontPadding="false"
+        android:maxLines="100"
+        android:paddingBottom="@dimen/spacing_mid_small_8dp"
+        android:paddingRight="@dimen/spacing_normal"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/size_content"
+        app:text_lookmore="@string/text_open"
+        tools:text="我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个我送第几个 "/>
+
+    <LinearLayout
+        android:id="@+id/fl_detial"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_content"
+        android:layout_marginBottom="@dimen/spacing_mid"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:layout_toRightOf="@id/iv_headpic"
+        android:background="@color/bgColor"
+        android:orientation="horizontal"
+        android:padding="@dimen/spacing_mid_small_8dp">
+
+        <FrameLayout
+            android:id="@+id/fl_image_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="@dimen/spacing_mid_small_8dp">
+
+            <com.zhiyicx.baseproject.widget.imageview.FilterImageView
+                android:id="@+id/iv_detail_image"
+                android:layout_width="@dimen/headpic_for_notification_30dp"
+                android:layout_height="@dimen/headpic_for_notification_30dp"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/shape_default_image">
+            </com.zhiyicx.baseproject.widget.imageview.FilterImageView>
+
+            <ImageView
+                android:id="@+id/iv_video_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@mipmap/ico_notice_video"
+                android:visibility="gone"/>
+
+        </FrameLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_deatil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="2"
+                android:textColor="@color/normal_for_assist_text"
+                android:textSize="@dimen/size_content_comment"
+                tools:text="点点滴滴范德的撒德萨范德萨范德萨多 "/>
+            <!--android:lineSpacingMultiplier="@dimen/line_spacing_Multiplier_normal"-->
+
+            <TextView
+                android:id="@+id/tv_extra_deatil"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:textColor="@color/normal_for_assist_text"
+                android:textSize="@dimen/size_content_comment"
+                android:visibility="gone"
+                tools:text="点点滴滴点滴滴的撒范德萨范德萨范德萨多点滴滴的撒范德萨范德萨范德萨多点滴滴的撒范德萨范德萨范德萨多点滴滴的撒范德萨范德萨范德萨多的撒范德萨范德萨范德萨多少撒\n点滴滴的撒点滴滴的撒范德萨范德萨范德萨多点滴滴的撒范德萨范德萨范德萨多范德萨范德萨范德萨多 "/>
+            <!--android:lineSpacingMultiplier="@dimen/line_spacing_Multiplier_normal"-->
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_name"
+        android:layout_marginBottom="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_small_4dp"
+        android:layout_toRightOf="@id/iv_headpic"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:textColor="@color/general_for_hint"
+        android:textSize="@dimen/size_icon_assist"
+        tools:text="6分钟前"/>
+
+    <TextView
+        android:id="@+id/tv_pay_num"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/spacing_mid"
+        android:layout_marginTop="@dimen/spacing_mid"
+        android:layout_toEndOf="@id/tv_name"
+        android:layout_toStartOf="@+id/tv_review"
+        android:gravity="center|right"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:paddingBottom="@dimen/spacing_big_line"
+        android:textColor="@color/money_gold_light"
+        android:textSize="@dimen/size_icon_assist"
+        android:visibility="invisible"
+        tools:text="30000积分 / 5天"/>
+
+    <TextView
+        android:id="@+id/tv_review"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_mid_offset"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingBottom="@dimen/spacing_big_line"
+        android:textColor="@color/dyanmic_top_flag"
+        android:textSize="@dimen/size_icon_assist"
+        tools:text="审核"/>
+
+    <TextView
+        android:id="@+id/tv_reply"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginEnd="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_mid_offset"
+        android:background="@drawable/shape_bg_radus_gray_"
+        android:gravity="center"
+        android:paddingBottom="@dimen/spacing_small_4dp"
+        android:paddingEnd="@dimen/spacing_mid_small"
+        android:paddingStart="@dimen/spacing_mid_small"
+        android:paddingTop="@dimen/spacing_small_4dp"
+        android:text="@string/reply_str"
+        android:textColor="@color/normal_for_assist_text"
+        android:textSize="@dimen/size_icon_assist"
+        android:visibility="gone"/>
+</RelativeLayout>

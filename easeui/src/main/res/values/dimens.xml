@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="chat_bottom_footer_height">15dp</dimen>
+    <dimen name="chat_send_location_map_height">280dp</dimen>
+    <dimen name="chat_send_location_map_min_height">160dp</dimen>
+    <dimen name="chat_send_location">65dp</dimen>
+</resources>

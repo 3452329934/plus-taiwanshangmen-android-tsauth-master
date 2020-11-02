@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_large"
+    android:layout_marginRight="@dimen/spacing_large"
+    android:layout_marginTop="@dimen/spacing_mid_offset"
+    android:background="@color/general_for_bg_light_f7"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/spacing_small"
+    android:paddingLeft="@dimen/spacing_small"
+    android:paddingRight="@dimen/spacing_mid"
+    android:paddingTop="@dimen/spacing_small">
+
+    <ImageView
+        android:id="@+id/iv_image"
+        android:layout_width="@dimen/letter_circle_image_widht"
+        android:layout_height="@dimen/letter_circle_image_height"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:scaleType="centerCrop"
+        tools:src="@mipmap/common_ico_bottom_add"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/iv_image"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:includeFontPadding="false"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_content_comment"
+            tools:text="ss"/>
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="@dimen/spacing_small"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:textColor="@color/letter_content_color"
+            android:textSize="@dimen/size_icon_assist"
+            tools:text="sssssssssssssssss"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

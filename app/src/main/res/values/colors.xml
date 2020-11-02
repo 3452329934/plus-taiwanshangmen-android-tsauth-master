@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 主页底部导航栏-->
+    <color name="home_bottom_navigate_bg">#363844</color>
+    <color name="home_bottom_navigate_text_normal">#707c81</color>
+    <!--频道详情，带透明度的白色-->
+    <color name="channel_detail_white_alpha">#b3ffffff</color>
+    <!--提现明细操作成功-->
+    <color name="withdrawals_item_enable">@color/money_gold</color>
+    <!--动态置顶标识-->
+    <color name="dyanmic_top_flag">@color/info_top</color>
+    <color name="post_excelent_flag">#f76c69</color>
+    <!--发布动态-->
+    <color name="dyanmic_send">#575757</color>
+
+    <color name="black">#000000</color>
+    <color name="twenty_alpha_black">#33000000</color>
+
+    <!--意见反馈-常见问题背景-->
+    <color name="feed_back_question">#f4f5f5</color>
+
+    <color name="expert_search_input_bg">#e7e7e7</color>
+    <!--签到 统计-->
+    <color name="check_in_total_text_color">#d46c28</color>
+    <color name="check_in_bg_start_color">#efb946</color>
+    <color name="check_in_bg_end_color">#ef8a46</color>
+    <!--消息红点颜色-->
+    <color name="message_badge_bg">#e34f4b</color>
+
+    <color name="home_add_page_bg">#F5ffffff</color>
+
+    <!--圈子-->
+    <color name="circle_navigation_bg">#363845</color>
+    <color name="circle_navigation_txt_color">#4a4d5e</color>
+    <color name="rule_tip_color">#b3999999</color>
+
+    <!--问答匿名选项颜色-->
+    <color name="qa_anonymity_color">#FBFBFB</color>
+    <color name="search_box_bg_color">#f4f5f5</color>
+    <color name="publish_feed_topic_tag">#e6e6e6</color>
+
+    <!-- 问答圈子头部展示全部的颜色 -->
+    <color name="qa_topic_q_detail_header_show_all">#b32495bd</color>
+    <color name="topic_bg_color">#e6e6e6</color>
+
+    <!--私信弹窗-->
+    <color name="letter_content_color">#a0a0a0</color>
+    <color name="letter_content_stroke">#f0f0f6</color>
+    <!--下载失败-->
+    <color name="downlaod_failed">#f4504d</color>
+    <color name="downlaod_success">#65c37d</color>
+    <color name="textcolor_net_link">#0D58EC</color>
+
+</resources>

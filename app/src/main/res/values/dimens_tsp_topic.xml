@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--#########################################      话题       ################################-->
+    <!--话题列表item高度-->
+    <dimen name="topic_main_item_height">90dp</dimen>
+    <dimen name="topic_main_item_height_v2">165dp</dimen>
+    <dimen name="create_topic_pic_hint_height">188dp</dimen>
+    <dimen name="create_topic_pic_min_height">80dp</dimen>
+</resources>

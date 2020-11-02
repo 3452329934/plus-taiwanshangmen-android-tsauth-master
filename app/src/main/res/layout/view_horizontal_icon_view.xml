@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fl_dig_head_container"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/topic_cover_height"
+        android:paddingLeft="@dimen/spacing_mid"
+        android:paddingRight="@dimen/spacing_mid"
+        android:gravity="center_vertical"
+        android:background="@color/white">
+
+    <TextView
+            android:id="@+id/tv_expert_count"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_content_assist"
+            android:textColor="@color/normal_for_assist_text"
+            android:layout_centerVertical="true"
+            tools:text="50位专家"/>
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/iv_dig_head1"
+            android:layout_width="@dimen/headpic_for_assist"
+            android:layout_height="@dimen/headpic_for_assist"
+            android:layout_alignParentEnd="true"
+            android:src="@mipmap/pic_default_secret"
+            android:layout_centerVertical="true"/>
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/iv_dig_head2"
+            android:layout_width="@dimen/headpic_for_assist"
+            android:layout_height="@dimen/headpic_for_assist"
+            android:layout_marginEnd="@dimen/head_right_margin_offset"
+            android:layout_toStartOf="@id/iv_dig_head1"
+            android:src="@mipmap/pic_default_secret"
+            android:layout_centerVertical="true"/>
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/iv_dig_head3"
+            android:layout_width="@dimen/headpic_for_assist"
+            android:layout_height="@dimen/headpic_for_assist"
+            android:layout_marginEnd="@dimen/head_right_margin_offset"
+            android:layout_toStartOf="@id/iv_dig_head2"
+            android:src="@mipmap/pic_default_secret"
+            android:layout_centerVertical="true"/>
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/iv_dig_head4"
+            android:layout_width="@dimen/headpic_for_assist"
+            android:layout_height="@dimen/headpic_for_assist"
+            android:layout_marginEnd="@dimen/head_right_margin_offset"
+            android:layout_toStartOf="@id/iv_dig_head3"
+            android:src="@mipmap/pic_default_secret"
+            android:layout_centerVertical="true"/>
+
+    <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/iv_dig_head5"
+            android:layout_width="@dimen/headpic_for_assist"
+            android:layout_height="@dimen/headpic_for_assist"
+            android:layout_marginEnd="@dimen/head_right_margin_offset"
+            android:layout_toStartOf="@id/iv_dig_head4"
+            android:src="@mipmap/pic_default_secret"
+            android:layout_centerVertical="true"/>
+
+</RelativeLayout>

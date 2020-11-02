@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/spacing_normal_8dp"
+    android:layout_marginBottom="@dimen/spacing_mid_small"
+    android:layout_marginTop="@dimen/spacing_normal_8dp"
+    android:layout_marginRight="@dimen/spacing_mid_small">
+
+    <TextView
+        android:id="@+id/tv_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_small"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:background="@drawable/item_channel_bg_normal"
+        android:gravity="center"
+        android:maxLines="1"
+        android:paddingLeft="@dimen/spacing_mid_small"
+        android:paddingRight="@dimen/spacing_mid_small"
+        android:paddingTop="@dimen/spacing_small"
+        android:paddingBottom="@dimen/spacing_small"
+        android:singleLine="true"
+        android:text="大哥"
+        android:textColor="@color/white"
+        android:textSize="@dimen/size_advert_launche"/>
+
+    <ImageView
+        android:id="@+id/iv_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ico_topic_close"/>
+
+</RelativeLayout>
+
+
+
+
+

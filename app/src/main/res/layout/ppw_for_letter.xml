@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/ll_container"
+        android:layout_width="@dimen/ppw_center_width"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_popwindow"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_mid"
+            android:textColor="@color/important_for_content"
+            android:textSize="@dimen/size_sub_title"
+            tools:text="title"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_normal"
+            android:background="@color/general_for_light_line"/>
+
+        <FrameLayout
+            android:id="@+id/fl_content"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </FrameLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginBottom="@dimen/spacing_mid"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:layout_marginTop="@dimen/spacing_mid_offset"
+            android:background="@drawable/shape_letter_content"
+            android:paddingBottom="@dimen/spacing_normal"
+            android:paddingLeft="@dimen/spacing_normal"
+            android:paddingRight="@dimen/spacing_mid_small"
+            android:paddingTop="@dimen/spacing_normal">
+
+            <ScrollView
+                android:id="@+id/scroll_view"
+                android:layout_width="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_height="match_parent"
+                android:layout_marginRight="@dimen/spacing_small"
+                android:layout_toLeftOf="@+id/iv_emoji">
+
+                <EditText
+                    android:gravity="left"
+                    android:layout_gravity="left"
+                    android:id="@+id/et_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@null"
+                    android:maxLength="@integer/comment_input_max_size"
+                    android:textColor="@color/important_for_content"
+                    android:textSize="@dimen/size_content_assist"
+                    android:textColorHint="@color/letter_content_color"
+                    android:hint="@string/letter_hinit"
+                    tools:text="我不要术要术管积要术管积管积分">
+                    <requestFocus/>
+                </EditText>
+            </ScrollView>
+
+            <ImageView
+                android:id="@+id/iv_emoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@mipmap/ico_kb_expression"/>
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/divider_line"
+            android:layout_marginLeft="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_large"
+            android:background="@color/general_for_light_line"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbarHeight"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/ppw_center_item_left"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/load_more_height"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/cancel"
+                android:textColor="@color/normal_for_assist_text"
+                android:textSize="@dimen/size_sub_title"
+                android:visibility="visible"/>
+
+            <View
+                android:id="@+id/view_diver"
+                style="@style/style_divider_veitical_light"
+                android:visibility="visible"/>
+
+            <TextView
+                android:id="@+id/ppw_center_item"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/load_more_height"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/send"
+                android:textColor="@color/themeColor"
+                android:textSize="@dimen/size_sub_title"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+</FrameLayout>

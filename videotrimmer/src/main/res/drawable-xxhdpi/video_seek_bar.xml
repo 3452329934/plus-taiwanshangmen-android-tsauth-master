@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--查看原图的按钮背景-->
+    <solid
+        android:color="#59b6d7"/>
+    <size
+        android:height="60dp"
+        android:width="2dp"/>
+</shape>

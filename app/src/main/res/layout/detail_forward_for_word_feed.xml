@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.zhiyicx.baseproject.widget.textview.SpanTextViewWithEllipsize
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/tv_forward_content"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/general_for_bg_light_f7"
+    android:ellipsize="end"
+    android:lineSpacingMultiplier="@dimen/line_spacing_Multiplier_normal"
+    android:maxLines="@integer/dynamic_list_forward_content_show_lines"
+    android:padding="@dimen/spacing_normal_8dp"
+    android:singleLine="false"
+    android:textColor="@color/normal_for_dynamic_list_content"
+    android:textSize="@dimen/size_content_assist"
+    tools:text="了解到富士康垃圾管理的高考了"/>

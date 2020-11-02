@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:descendantFocusability="blocksDescendants"
+    android:orientation="vertical">
+
+    <!--资讯头部的信息-->
+    <!--title-->
+    <TextView
+        android:id="@+id/tv_info_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_large"
+        android:layout_marginRight="@dimen/spacing_normal"
+        android:textColor="@color/important_for_content"
+        android:textSize="@dimen/info_title_size"
+        tools:text="xxxxxxxxxxxxxxxxxxxxxxxxx"/>
+
+    <RelativeLayout
+        android:id="@+id/cl_userinfo_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal_large"
+        android:layout_marginRight="@dimen/spacing_normal">
+
+        <com.zhiyicx.baseproject.widget.UserAvatarView
+            android:id="@+id/user_avatar"
+            android:layout_width="@dimen/info_detail_header_user_height"
+            android:layout_height="@dimen/info_detail_header_user_height"
+            tools:src="@mipmap/ic_launcher"/>
+
+
+        <TextView
+            android:id="@+id/user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/user_avatar"
+            android:layout_marginLeft="@dimen/spacing_mid_small_8dp"
+            android:layout_marginTop="@dimen/spacing_small_3dp"
+            android:layout_toEndOf="@id/user_avatar"
+            android:textColor="@color/important_for_content"
+            android:textSize="13sp"
+            tools:text="Thinksns"/>
+
+        <CheckBox
+            android:id="@+id/user_follow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="@dimen/spacing_normal_8dp"
+            android:background="@drawable/info_detail_header_user_follow_blue"
+            android:button="@null"
+            android:clickable="true"
+            android:drawableLeft="@drawable/selector_channel_list_subscrib_button_left_drawable"
+            android:drawablePadding="@dimen/spacing_small_3dp"
+            android:paddingLeft="@dimen/spacing_normal_8dp"
+            android:paddingTop="@dimen/spacing_small_3dp"
+            android:paddingRight="@dimen/spacing_normal_8dp"
+            android:paddingBottom="@dimen/spacing_small_3dp"
+            android:textColor="@color/selector_channel_list_subscrib_button_divider"
+            android:textSize="12sp"
+            tools:text="关注"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/info_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_name"
+            android:layout_marginLeft="@dimen/spacing_mid_small_8dp"
+            android:layout_marginTop="@dimen/spacing_small_3dp"
+            android:layout_toEndOf="@id/user_avatar"
+            android:background="@drawable/shape_info_list_channel"
+            android:padding="@dimen/spacing_tiny"
+            android:textColor="@color/important_for_theme"
+            android:textSize="10sp"
+            tools:text="优惠活动"/>
+
+        <TextView
+            android:id="@+id/info_time_and_look"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/user_name"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginTop="@dimen/spacing_small_3dp"
+            android:layout_marginEnd="@dimen/spacing_small"
+            android:layout_toStartOf="@id/user_follow"
+            android:layout_toEndOf="@id/info_type"
+            android:gravity="left"
+            android:textColor="@color/normal_for_disable_button_b3_text"
+            android:textSize="12sp"
+            tools:text="优惠活动fdafldjsalfjdslafjldsajfdlsjfkldsjfldsjfldfjs"/>
+
+    </RelativeLayout>
+
+    <!--栏目以及来源-->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_mid_small_9dp"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/tv_from_channel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/shape_info_list_channel"
+            android:padding="@dimen/spacing_tiny"
+            android:textColor="@color/themeColor"
+            android:textSize="@dimen/size_advert_launche"
+            tools:text="时政"/>
+
+        <TextView
+            android:id="@+id/item_info_timeform"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/spacing_small"
+            android:layout_marginLeft="@dimen/spacing_small"
+            android:textColor="@color/general_for_hint"
+            android:textSize="@dimen/size_icon_assist"
+            tools:text="三小时前   来自火星"/>
+    </LinearLayout>
+
+    <br.tiagohm.markdownview.MarkdownView
+        android:id="@+id/info_content_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/spacing_normal"
+        android:layout_marginTop="@dimen/spacing_normal_large"
+        android:layout_marginRight="@dimen/spacing_normal"/>
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <br.tiagohm.markdownview.MarkdownView
+            android:id="@+id/info_detail_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:layout_marginRight="@dimen/spacing_mid_small"
+            android:layout_marginBottom="@dimen/spacing_mid"
+            android:visibility="visible"
+            app:escapeHtml="false"
+            tools:ignore="WebViewLayout"/>
+
+        <!--用来占位的-->
+        <ImageView
+            android:id="@+id/iv_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@mipmap/default_pic_personal"
+            android:visibility="gone"/>
+    </FrameLayout>
+
+
+    <include
+        layout="@layout/item_dynamic_detail_dig"/>
+
+    <include
+        layout="@layout/include_reward"/>
+
+    <!--相关资讯以及标签-->
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_small"
+        android:background="@color/general_for_bg_light"/>
+
+    <FrameLayout
+        android:id="@+id/info_relate_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/spacing_mid"
+                android:paddingLeft="@dimen/spacing_normal"
+                android:paddingTop="@dimen/spacing_mid"
+                android:paddingRight="@dimen/spacing_normal"
+                android:paddingBottom="@dimen/spacing_mid"
+                android:text="@string/info_relate"
+                android:textColor="@color/important_for_content"
+                android:textSize="@dimen/size_content_assist"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_line_bottom_themcolor"/>
+        </LinearLayout>
+
+        <View
+            style="@style/style_divider_horizontal_light"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+
+    <com.zhy.view.flowlayout.TagFlowLayout
+        android:id="@+id/fl_tags"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_margin="@dimen/spacing_normal"
+        android:background="@color/white"
+        app:max_select="0"
+        />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv_relate_info"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_small"
+        android:background="@color/general_for_bg_light"/>
+
+    <include
+        layout="@layout/advert_details"
+        />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/spacing_small"
+        android:background="@color/general_for_bg_light"/>
+
+    <!--评论数-->
+    <FrameLayout
+        android:id="@+id/info_detail_comment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/spacing_normal"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_comment_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawablePadding="@dimen/spacing_mid"
+                android:paddingLeft="@dimen/spacing_normal"
+                android:paddingTop="@dimen/spacing_mid"
+                android:paddingRight="@dimen/spacing_normal"
+                android:paddingBottom="@dimen/spacing_mid"
+                android:textColor="@color/important_for_content"
+                android:textSize="@dimen/size_content_assist"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/shape_line_bottom_themcolor"/>
+        </LinearLayout>
+
+        <View
+            style="@style/style_divider_horizontal_light"
+            android:layout_gravity="bottom"/>
+    </FrameLayout>
+</LinearLayout>

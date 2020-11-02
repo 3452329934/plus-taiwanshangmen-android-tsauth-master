@@ -1,0 +1,35 @@
+apply plugin: 'com.android.library'
+android {
+    def gConfig = rootProject.extensions.getByName("ext")
+    compileSdkVersion gConfig["compileSdkVersion"]
+    buildToolsVersion gConfig["buildToolsVersion"]
+    defaultConfig {
+        minSdkVersion gConfig["minSdkVersion"]
+        targetSdkVersion gConfig["targetSdkVersion"]
+        versionCode gConfig["versionCode"]
+        versionName gConfig["versionName"]
+        testInstrumentationRunner gConfig.testDependencies.androidJUnitRunner
+    }
+
+    lintOptions {
+        abortOnError false
+        // if true, only report errors.
+        ignoreWarnings true
+    }
+
+}
+
+
+
+dependencies {
+    def dataDependences = rootProject.ext.dataDependencies
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    implementation dataDependences.glide
+    def gConfig = rootProject.extensions.getByName("ext")
+    def androidSupportSdkVersion = gConfig["androidSupportSdkVersion"]
+    implementation "com.android.support:appcompat-v7:${androidSupportSdkVersion}"
+    implementation "com.android.support:support-emoji-bundled:${androidSupportSdkVersion}"
+    implementation "com.android.support:support-emoji-appcompat:${androidSupportSdkVersion}"
+    implementation "com.android.support:recyclerview-v7:${androidSupportSdkVersion}"
+    implementation dataDependences.gson
+}
