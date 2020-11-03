@@ -36,17 +36,17 @@
                 android:orientation="horizontal"
                 android:gravity="center">
 
-                <RadioButton
-                    android:id="@+id/rb_qa"
-                    android:button="@null"
-                    android:background="@drawable/selector_qa_left_select_stated"
-                    android:textSize="@dimen/size_sub_title"
-                    android:text="@string/quiz"
-                    android:textColor="@color/selector_qa_select_textcolor"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"/>
+<!--                <RadioButton-->
+<!--                    android:id="@+id/rb_qa"-->
+<!--                    android:button="@null"-->
+<!--                    android:background="@drawable/selector_qa_left_select_stated"-->
+<!--                    android:textSize="@dimen/size_sub_title"-->
+<!--                    android:text="@string/quiz"-->
+<!--                    android:textColor="@color/selector_qa_select_textcolor"-->
+<!--                    android:layout_weight="1"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_width="0dp"-->
+<!--                    android:layout_height="match_parent"/>-->
 
                 <RadioButton
                     android:id="@+id/rb_topic"

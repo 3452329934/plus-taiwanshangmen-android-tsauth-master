@@ -9,6 +9,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -212,9 +214,12 @@ public class DynamicListBaseItem implements ItemViewDelegate<DynamicDetailBeanV2
             try {
                 ImageUtils.loadCircleUserHeadPic(dynamicBean.getUserInfoBean(), holder.getView(R.id.iv_headpic));
                 setUserInfoClick(holder.getView(R.id.iv_headpic), dynamicBean);
+
             } catch (Exception ignored) {
             }
             holder.setText(R.id.tv_name, dynamicBean.getUserInfoBean().getName());
+            holder.getTextView(R.id.tv_name).setTextSize(18);
+
             setUserInfoClick(holder.getView(R.id.tv_name), dynamicBean);
 
             holder.setText(R.id.tv_time, dynamicBean.getFriendlyTime());
@@ -303,11 +308,13 @@ public class DynamicListBaseItem implements ItemViewDelegate<DynamicDetailBeanV2
                 dynamicListMenuView.setItemTextAndStatus(ConvertUtils.numberConvert(dynamicBean
                                 .getFeed_view_count() == 0 ? 1 : dynamicBean.getFeed_view_count()),
                         false, 2);
+//                dynamicListMenuView.setItemTextAndStatus("",false, 3);
                 // 控制更多按钮的显示隐藏
                 dynamicListMenuView.setItemPositionVisiable(0, getVisibleOne());
                 dynamicListMenuView.setItemPositionVisiable(1, getVisibleTwo());
                 dynamicListMenuView.setItemPositionVisiable(2, getVisibleThree());
                 dynamicListMenuView.setItemPositionVisiable(3, getVisibleFour());
+//                dynamicListMenuView.setItemPositionVisiable(4, getVisibleFive());
                 // 设置工具栏的点击事件
                 dynamicListMenuView.setItemOnClick((parent, v, menuPostion) -> {
                     if (mOnMenuItemClickLisitener != null) {
@@ -548,6 +555,9 @@ public class DynamicListBaseItem implements ItemViewDelegate<DynamicDetailBeanV2
         return View.VISIBLE;
     }
 
+//    protected int getVisibleFive() {
+//        return View.VISIBLE;
+//    }
     /**
      * 网页链接
      *

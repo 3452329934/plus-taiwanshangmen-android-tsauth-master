@@ -75,6 +75,7 @@ public class DynamicListItemForAdvert extends DynamicListBaseItem {
             dynamicListMenuView.setItemPositionVisiable(1, getVisibleTwo());
             dynamicListMenuView.setItemPositionVisiable(2, getVisibleThree());
             dynamicListMenuView.setItemPositionVisiable(3, getVisibleFour());
+
             // 设置工具栏的点击事件
             dynamicListMenuView.setItemOnClick((parent, v, menuPostion) -> {
                 if (mOnMenuItemClickLisitener != null) {

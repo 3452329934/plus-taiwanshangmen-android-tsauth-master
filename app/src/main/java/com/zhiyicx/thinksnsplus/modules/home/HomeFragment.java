@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -136,7 +137,7 @@ public class HomeFragment extends TSFragment<HomeContract.Presenter> implements 
      * 签到信息
      */
     private CheckInBean mCheckInBean;
-    private ArrayList<Fragment> mFragmentList = new ArrayList<>();
+    private ArrayList<Fragment> mFragmentList =  new ArrayList<>();
     private boolean isFirst = true;
 
     public static HomeFragment newInstance(Bundle args) {
@@ -219,8 +220,6 @@ public class HomeFragment extends TSFragment<HomeContract.Presenter> implements 
             initViewPager();
             mVpHome.setCurrentItem(mCurrenPage, false);
         }
-
-
     }
 
     public MainFragment getMainFragment() {

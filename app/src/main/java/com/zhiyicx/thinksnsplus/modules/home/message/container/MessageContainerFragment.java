@@ -118,10 +118,12 @@ public class MessageContainerFragment extends TSViewPagerFragment implements Eas
         super.initViewPager(rootView);
         mTsvToolbar.setLeftImg(0);
         mTsvToolbar.setRightImg(R.mipmap.ico_spchat, R.color.white);
+
         mTsvToolbar.setLeftClickListener(this, () -> {
             Intent intent = new Intent(getContext(), MessageGroupActivity.class);
             startActivity(intent);
         });
+        // 選擇好友
         mTsvToolbar.setRightClickListener(this, () -> {
             Intent intent = new Intent(getContext(), SelectFriendsActivity.class);
             startActivity(intent);

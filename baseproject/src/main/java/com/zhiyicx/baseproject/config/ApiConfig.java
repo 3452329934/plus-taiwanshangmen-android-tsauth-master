@@ -30,8 +30,9 @@ public class ApiConfig {
 
     public static final boolean APP_IS_NEED_SSH_CERTIFICATE = true;// 自定义证书时使用false
     //    public static final String APP_DOMAIN_DEV = "https://dev.zhibocloud.cn/";// 模拟在线正式服务器
-    public static final String APP_DOMAIN_TEST = "http://test-plus.zhibocloud.cn/";// 在线测试服务器
-    public static final String APP_DOMAIN_FORMAL = "https://tsplus.zhibocloud.cn/";// 正式服务器
+    public static final String APP_DOMAIN_TEST = "https://marriage-party.fun/";// 在线测试服务器
+//    public static final String APP_DOMAIN_FORMAL = "https://shangmen.thinksns-plus.com/";// 正式服务器
+    public static final String APP_DOMAIN_FORMAL = "https://marriage-party.fun/";// 正式服务器
     public static final String APP_DOMAIN_FOR_TEARCHER_QIAO = "http://192.168.2.152/";// 乔老师本地服务器
     public static final String APP_DOMAIN_DEV = APP_DOMAIN_FOR_TEARCHER_QIAO;// 模拟在线正式服务器
 

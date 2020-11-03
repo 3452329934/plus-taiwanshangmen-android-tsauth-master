@@ -88,15 +88,15 @@
                 app:showLine="false"
                 app:showTopLine="true"/>
 
-            <com.zhiyicx.baseproject.widget.button.CombinationButton
-                android:id="@+id/tv_add_topic"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/full_button_height"
-                android:layout_marginLeft="@dimen/spacing_normal"
-                app:leftText="@string/dynamic_publish_select_topic"
-                app:rightImage="@mipmap/ic_arrow_smallgrey"
-                app:showLine="false"
-                app:showTopLine="true"/>
+<!--            <com.zhiyicx.baseproject.widget.button.CombinationButton-->
+<!--                android:id="@+id/tv_add_topic"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="@dimen/full_button_height"-->
+<!--                android:layout_marginLeft="@dimen/spacing_normal"-->
+<!--                app:leftText="@string/dynamic_publish_select_topic"-->
+<!--                app:rightImage="@mipmap/ic_arrow_smallgrey"-->
+<!--                app:showLine="false"-->
+<!--                app:showTopLine="true"/>-->
 
             <View
                 style="@style/style_divider_horizontal_light"

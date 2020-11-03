@@ -603,7 +603,7 @@
 
         <!-- 新浪分享 -->
         <activity
-            android:name=".WBShareActivity"
+            android:name="com.chiehmeng.goingdown.WBShareActivity"
             android:configChanges="keyboardHidden|orientation"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -614,7 +614,7 @@
         </activity>
         <!-- 微信分享结果类 -->
         <activity
-            android:name=".wxapi.WXEntryActivity"
+            android:name="com.chiehmeng.goingdown.wxapi.WXEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"
             android:screenOrientation="portrait">
@@ -989,7 +989,7 @@
             android:name=".modules.home.message.messagegroup.MessageGroupActivity"
             android:screenOrientation="portrait"/>
         <activity
-            android:name=".wxapi.WXPayEntryActivity"
+            android:name="com.chiehmeng.goingdown.wxapi.WXPayEntryActivity"
             android:exported="true"
             android:launchMode="singleTop"/>
         <!--聊天发送位置-->
@@ -1051,6 +1051,10 @@
         <!--@我的列表-->
         <activity
             android:name=".modules.home.message.messageat.MessageAtActivity"
+            android:screenOrientation="portrait"/>
+        <!--聊天-->
+        <activity
+            android:name=".modules.home.message.messagelist.MessageConversationActivity"
             android:screenOrientation="portrait"/>
         <!--圈子预览-->
         <activity

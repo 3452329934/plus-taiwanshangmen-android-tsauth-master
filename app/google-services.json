@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:700117461212:android:7f73635f1f941062",
         "android_client_info": {
-          "package_name": "com.zhiqi.doumeng"
+          "package_name": "com.chiehmeng.goingdown"
         }
       },
       "oauth_client": [
@@ -18,7 +18,7 @@
           "client_id": "700117461212-lgmg96fo8nnigbgnk0us4ej90dsog4jn.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.zhiqi.doumeng",
+            "package_name": "com.chiehmeng.goingdown",
             "certificate_hash": "eb90bd01f817f6c840a97910c91f09cf0df7323c"
           }
         },
@@ -54,7 +54,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:700117461212:android:ee836d8c73d521d1",
         "android_client_info": {
-          "package_name": "com.zhiyicx.thinksnsplus"
+          "package_name": "com.chiehmeng.goingdown"
         }
       },
       "oauth_client": [
@@ -62,7 +62,7 @@
           "client_id": "700117461212-d23snfgiv4vl7ksacmr6htqepb9njpvp.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.zhiyicx.thinksnsplus",
+            "package_name": "com.chiehmeng.goingdown",
             "certificate_hash": "f12beadbd4daa4fcc1e07a64e08720621acd511c"
           }
         },

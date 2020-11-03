@@ -825,7 +825,6 @@ public class DynamicFragment extends TSListFragmentForDownload<DynamicContract.P
                 // 浏览
                 onItemClick(null, null, dataPosition + mHeaderAndFooterWrapper.getHeadersCount());
                 break;
-
             case 3:
                 // 更多
                 Bitmap shareBitMap = null;

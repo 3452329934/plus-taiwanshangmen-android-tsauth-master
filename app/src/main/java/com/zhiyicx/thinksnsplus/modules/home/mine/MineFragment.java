@@ -28,6 +28,7 @@ import com.zhiyicx.thinksnsplus.modules.draftbox.DraftBoxActivity;
 import com.zhiyicx.thinksnsplus.modules.edit_userinfo.UserInfoActivity;
 import com.zhiyicx.thinksnsplus.modules.follow_fans.FollowFansListActivity;
 import com.zhiyicx.thinksnsplus.modules.follow_fans.FollowFansListFragment;
+import com.zhiyicx.thinksnsplus.modules.home.message.messagelist.MessageConversationActivity;
 import com.zhiyicx.thinksnsplus.modules.home.mine.friends.MyFriendsListActivity;
 import com.zhiyicx.thinksnsplus.modules.home.mine.mycode.MyCodeActivity;
 import com.zhiyicx.thinksnsplus.modules.information.my_info.ManuscriptsActivity;
@@ -145,7 +146,7 @@ public class MineFragment extends TSFragment<MineContract.Presenter> implements 
             mPresenter.updateUserInfo();
             mPresenter.getCertificationInfo();
             mSystemConfigBean = mPresenter.getSystemConfigBean();
-            mBtMineQA.setVisibility(mSystemConfigBean.getQuestionConfig().isStatus()?View.VISIBLE:View.GONE);
+            mBtMineQA.setVisibility(View.GONE);
         }
     }
 
@@ -271,6 +272,8 @@ public class MineFragment extends TSFragment<MineContract.Presenter> implements 
              */
             case R.id.bt_mine_integration:
                 startActivity(new Intent(mActivity, MineIntegrationActivity.class));
+//                startActivity(new Intent(mActivity, MessageConversationActivity.class));
+//
                 break;
             /*
               我的音乐
@@ -335,7 +338,7 @@ public class MineFragment extends TSFragment<MineContract.Presenter> implements 
 
     @Override
     public void setUserInfo(UserInfoBean userInfoBean) {
-        btMineIntegration.setLeftText(getString(R.string.my_integration_name, mPresenter.getGoldName()));
+//        btMineIntegration.setLeftText(getString(R.string.my_integration_name, mPresenter.getGoldName()));
         if (userInfoBean == null) {
             return;
         }

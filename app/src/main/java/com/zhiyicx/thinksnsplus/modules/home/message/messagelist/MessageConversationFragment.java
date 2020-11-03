@@ -3,7 +3,9 @@ package com.zhiyicx.thinksnsplus.modules.home.message.messagelist;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 
+import com.zhiyicx.thinksnsplus.R;
 import com.zhiyicx.thinksnsplus.base.AppApplication;
 import com.zhiyicx.thinksnsplus.data.beans.MessageItemBeanV2;
 import com.zhiyicx.thinksnsplus.modules.home.message.MessageAdapterV2;
@@ -16,15 +18,43 @@ import com.zhiyicx.thinksnsplus.modules.home.message.MessageAdapterV2;
  */
 public class MessageConversationFragment
         extends BaseMessageConversationFragment<MessageConversationContract.Presenter<MessageItemBeanV2>, MessageItemBeanV2> {
+    public static String titleName = "";
+
+    public static MessageConversationFragment newInstance(String title) {
+        Bundle args = new Bundle();
+        MessageConversationFragment fragment = new MessageConversationFragment();
+        fragment.setArguments(args);
+        if (title != "") {
+            titleName = title;
+            Log.d("xxxxxxxx", title);
+        }
+        return fragment;
+    }
+
+    @Override
+    protected String setCenterTitle() {
+        return getString(R.string.at_me_message);
+    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         DaggerMessageConversationComponent.builder()
                 .appComponent(AppApplication.AppComponentHolder.getAppComponent())
                 .messageConversationPresenterModule(new MessageConversationPresenterModule(this))
                 .build()
                 .inject(this);
+//        if (titleName == "") {
+//
+//            DaggerMessageConversationComponent.builder()
+//                    .appComponent(AppApplication.AppComponentHolder.getAppComponent())
+//                    .messageConversationPresenterModule(new MessageConversationPresenterModule(this))
+//                    .build()
+//                    .inject(this);
+//        } else {
+//
+//        }
     }
 
     @Override

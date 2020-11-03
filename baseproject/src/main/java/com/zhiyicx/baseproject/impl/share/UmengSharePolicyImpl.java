@@ -455,16 +455,16 @@ public class UmengSharePolicyImpl implements SharePolicy, OnShareCallbackListene
     @NonNull
     private List<ShareBean> getShareBeans() {
         List<ShareBean> mDatas = new ArrayList<>();
-        ShareBean qq = new ShareBean(R.mipmap.detail_share_qq, mContext.getString(R.string.qq_share), Share.QQ);
-        ShareBean qZone = new ShareBean(R.mipmap.detail_share_zone, mContext.getString(R.string.qZone_share), Share.QZONE);
-        ShareBean weChat = new ShareBean(R.mipmap.detail_share_wechat, mContext.getString(R.string.weChat_share), Share.WEIXIN);
-        ShareBean weCircle = new ShareBean(R.mipmap.detail_share_friends, mContext.getString(R.string.weCircle_share), Share.WEIXIN_CIRCLE);
-        ShareBean weibo = new ShareBean(R.mipmap.detail_share_weibo, mContext.getString(R.string.weibo_share), Share.SINA);
-        mDatas.add(qq);
-        mDatas.add(qZone);
-        mDatas.add(weChat);
-        mDatas.add(weCircle);
-        mDatas.add(weibo);
+//        ShareBean qq = new ShareBean(R.mipmap.detail_share_qq, mContext.getString(R.string.qq_share), Share.QQ);
+//        ShareBean qZone = new ShareBean(R.mipmap.detail_share_zone, mContext.getString(R.string.qZone_share), Share.QZONE);
+//        ShareBean weChat = new ShareBean(R.mipmap.detail_share_wechat, mContext.getString(R.string.weChat_share), Share.WEIXIN);
+//        ShareBean weCircle = new ShareBean(R.mipmap.detail_share_friends, mContext.getString(R.string.weCircle_share), Share.WEIXIN_CIRCLE);
+//        ShareBean weibo = new ShareBean(R.mipmap.detail_share_weibo, mContext.getString(R.string.weibo_share), Share.SINA);
+//        mDatas.add(qq);
+//        mDatas.add(qZone);
+//        mDatas.add(weChat);
+//        mDatas.add(weCircle);
+//        mDatas.add(weibo);
         return mDatas;
     }
 

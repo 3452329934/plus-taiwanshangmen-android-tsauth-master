@@ -14,6 +14,7 @@ import com.zhiyicx.baseproject.widget.button.CombinationButton;
 import com.zhiyicx.baseproject.widget.popwindow.CenterInfoPopWindow;
 import com.zhiyicx.common.widget.popwindow.CustomPopupWindow;
 import com.zhiyicx.thinksnsplus.R;
+import com.zhiyicx.thinksnsplus.modules.home.message.messagelist.MessageConversationActivity;
 import com.zhiyicx.thinksnsplus.modules.wallet.bill.BillActivity;
 import com.zhiyicx.thinksnsplus.modules.wallet.integration.recharge.IntegrationRechargeActivity;
 import com.zhiyicx.thinksnsplus.modules.wallet.recharge.RechargeActivity;
@@ -30,6 +31,7 @@ import java.util.Locale;
 import java.util.concurrent.TimeUnit;
 
 import butterknife.BindView;
+import butterknife.internal.DebouncingOnClickListener;
 
 import static com.zhiyicx.common.config.ConstantConfig.JITTER_SPACING_TIME;
 import static com.zhiyicx.thinksnsplus.config.EventBusTagConfig.EVENT_WALLET_RECHARGE;
@@ -123,12 +125,13 @@ public class WalletFragment extends TSFragment<WalletContract.Presenter> impleme
     @Override
     protected void initData() {
         mSystemConfigBean = mPresenter.getSystemConfigBean();
-        if (mSystemConfigBean.getCurrency().getRecharge() != null && mSystemConfigBean.getCurrency().getRecharge().isOpen()) {
-            btMineIntegration.setVisibility(View.VISIBLE);
-            btMineIntegration.setLeftText(getString(R.string.integration_recharge_format, mPresenter.getGoldName()));
-        } else {
-            btMineIntegration.setVisibility(View.GONE);
-        }
+        btMineIntegration.setVisibility(View.GONE);
+//        if (mSystemConfigBean.getCurrency().getRecharge() != null && mSystemConfigBean.getCurrency().getRecharge().isOpen()) {
+//            btMineIntegration.setVisibility(View.VISIBLE);
+//            btMineIntegration.setLeftText(getString(R.string.integration_recharge_format, mPresenter.getGoldName()));
+//        } else {
+//            btMineIntegration.setVisibility(View.GONE);
+//        }
     }
 
     @Override
@@ -147,10 +150,16 @@ public class WalletFragment extends TSFragment<WalletContract.Presenter> impleme
 
     private void initListener() {
         // 充值
-        RxView.clicks(mBtReCharge)
-                .throttleFirst(JITTER_SPACING_TIME, TimeUnit.SECONDS)
-                .compose(this.bindToLifecycle())
-                .subscribe(aVoid -> mPresenter.checkWalletConfig(WalletPresenter.TAG_RECHARGE, true));
+        mBtReCharge.setOnClickListener(new DebouncingOnClickListener() {
+            @Override
+            public void doClick(View p0) {
+                startActivity(new Intent(mActivity, MessageConversationActivity.class));
+            }
+        });
+//        RxView.clicks(mBtReCharge)
+//                .throttleFirst(JITTER_SPACING_TIME, TimeUnit.SECONDS)
+//                .compose(this.bindToLifecycle())
+//                .subscribe(aVoid -> mPresenter.checkWalletConfig(WalletPresenter.TAG_RECHARGE, true));
         // 提现
         RxView.clicks(mBtWithdraw)
                 .throttleFirst(JITTER_SPACING_TIME, TimeUnit.SECONDS)

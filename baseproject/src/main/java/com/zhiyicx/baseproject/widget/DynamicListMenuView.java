@@ -37,22 +37,26 @@ public class DynamicListMenuView extends LinearLayout {
     public static final int DEFAULT_RESOURES_ID = -1; // 默认 id ，当子类使用默认 id 时，进行占位判断
     public static final int DEFAULT_RESOURES_ID_ = -2; // 默认 id ，当子类使用默认 id 时，进行占位判断
     // item 数量
-    private static final int ITEM_NUMS_MAX = 4;
+    private static final int ITEM_NUMS_MAX = 5;
     private static final int ITEM_POSITION_0 = 0;
     private static final int ITEM_POSITION_1 = 1;
     private static final int ITEM_POSITION_2 = 2;
     private static final int ITEM_POSITION_3 = 3;
+    private static final int ITEM_POSITION_4 = 4;
 
+    protected View mLlDynamicListSubscribe;
     protected View mLlDynamicListLike;
     protected View mLlDynamicListComment;
     protected View mLlDynamicListPageviews;
     protected View mFlDynamicListMore;
 
+    protected ImageView mIvDynamicListSubscribe;
     protected ImageView mIvDynamicListLike;
     protected ImageView mIvDynamicListComment;
     protected ImageView mIvDynamicListShare;
     protected ImageView mIvDynamicListMore;
 
+    protected TextView mTvDynamicListSubscribe;
     protected TextView mTvDynamicListLike;
     protected TextView mTvDynamicListComment;
     protected TextView mTvDynamicListPageviewst;
@@ -66,6 +70,7 @@ public class DynamicListMenuView extends LinearLayout {
             R.mipmap.home_ico_good_normal,
             R.mipmap.home_ico_comment_normal,
             R.mipmap.home_ico_eye_normal,
+//            R.mipmap.home_ico_good_subscribe,
             R.mipmap.home_ico_more
     };// 图片 ids 正常状态
     protected
@@ -74,7 +79,8 @@ public class DynamicListMenuView extends LinearLayout {
             R.mipmap.home_ico_good_high,
             R.mipmap.home_ico_comment_normal,
             R.mipmap.home_ico_eye_normal,
-            R.mipmap.home_ico_more
+//            R.mipmap.home_ico_good_subscribe,
+            R.mipmap.home_ico_more,
     };// 图片 ids 选中状态
     protected
     @StringRes
@@ -107,19 +113,25 @@ public class DynamicListMenuView extends LinearLayout {
     private void init(Context context, AttributeSet attrs) {
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.view_dynamic_list_menu, this);
+
         mLlDynamicListLike = findViewById(R.id.ll_dynamic_list_like);
         mLlDynamicListComment = findViewById(R.id.ll_dynamic_list_comment);
         mLlDynamicListPageviews = findViewById(R.id.ll_dynamic_list_pageviews);
+//        mLlDynamicListSubscribe = findViewById(R.id.ll_dynamic_list_subscribe);
         mFlDynamicListMore = findViewById(R.id.fl_dynamic_list_more);
+
 
         mIvDynamicListLike = (ImageView) findViewById(R.id.iv_dynamic_list_like);
         mIvDynamicListComment = (ImageView) findViewById(R.id.iv_dynamic_list_comment);
         mIvDynamicListShare = (ImageView) findViewById(R.id.iv_dynamic_list_pageviews);
+//        mIvDynamicListSubscribe = (ImageView) findViewById(R.id.iv_dynamic_list_subscribe);
         mIvDynamicListMore = (ImageView) findViewById(R.id.iv_dynamic_list_more);
+
 
         mTvDynamicListLike = (TextView) findViewById(R.id.tv_dynamic_list_like);
         mTvDynamicListComment = (TextView) findViewById(R.id.tv_dynamic_list_comment);
         mTvDynamicListPageviewst = (TextView) findViewById(R.id.tv_dynamic_list_pageviews);
+//        mTvDynamicListSubscribe = (TextView) findViewById(R.id.tv_dynamic_list_subscribe);
         initListener();
         setData();
         setOrientation(HORIZONTAL);
@@ -156,6 +168,17 @@ public class DynamicListMenuView extends LinearLayout {
                         }
                     }
                 });
+//        RxView.clicks(mLlDynamicListSubscribe)
+//                .throttleFirst(JITTER_SPACING_TIME, TimeUnit.SECONDS)  // 两秒钟之内只取一个点击事件，防抖操作
+//                .subscribe(new Action1<Void>() {
+//                    @Override
+//                    public void call(Void aVoid) {
+//                        if (mOnItemListener != null) {
+//                            mOnItemListener.onItemClick((ViewGroup) mLlDynamicListSubscribe, mIvDynamicListSubscribe, ITEM_POSITION_3);
+//                        }
+//                    }
+//                });
+
         RxView.clicks(mIvDynamicListMore)
                 .throttleFirst(JITTER_SPACING_TIME, TimeUnit.SECONDS)  // 两秒钟之内只取一个点击事件，防抖操作
                 .subscribe(new Action1<Void>() {
@@ -172,7 +195,6 @@ public class DynamicListMenuView extends LinearLayout {
      * 设置数据
      */
     protected void setData() {
-
         int length = mImageNormalResourceIds.length;
         for (int i = 0; i < length; i++) { // 最多支持 4 个 Item 多余的数据丢弃
             if (i < ITEM_NUMS_MAX) {
@@ -182,7 +204,6 @@ public class DynamicListMenuView extends LinearLayout {
                 break;
             }
         }
-
     }
 
     /**
@@ -272,6 +293,9 @@ public class DynamicListMenuView extends LinearLayout {
             case ITEM_POSITION_2:
                 setItemState(isChecked, mLlDynamicListPageviews, mIvDynamicListShare, mTvDynamicListPageviewst, postion, isNeedSetText);
                 break;
+//            case ITEM_POSITION_3:
+//                setItemState(isChecked, mLlDynamicListSubscribe, mIvDynamicListSubscribe, mTvDynamicListSubscribe, postion, isNeedSetText);
+//                break;
             case ITEM_POSITION_3:
                 setItemState(isChecked, mFlDynamicListMore, mIvDynamicListMore, null, postion, isNeedSetText);
                 break;
@@ -293,6 +317,9 @@ public class DynamicListMenuView extends LinearLayout {
             case ITEM_POSITION_2:
                 setAdvertItemState(isChecked, mLlDynamicListPageviews, mIvDynamicListShare, mTvDynamicListPageviewst, postion, isNeedSetText, isNeedImage);
                 break;
+//            case ITEM_POSITION_3:
+//                setAdvertItemState(isChecked, mLlDynamicListSubscribe, mIvDynamicListSubscribe, mTvDynamicListSubscribe, postion, isNeedSetText, isNeedImage);
+//                break;
             case ITEM_POSITION_3:
                 setAdvertItemState(isChecked, mFlDynamicListMore, mIvDynamicListMore, null, postion, isNeedSetText, isNeedImage);
                 break;

@@ -49,7 +49,7 @@ android {
         // 极光推送
         manifestPlaceholders = [
                 JPUSH_PKGNAME: applicationId,
-                JPUSH_APPKEY : "f0f9b22e116b6d60a278073f", //JPush上注册的包名对应的appkey.
+                JPUSH_APPKEY : "1ec86bd453cd3bfe16ec995a", //JPush上注册的包名对应的appkey.
                 JPUSH_CHANNEL: "developer-default", //暂时填写默认值即可.
         ]
 
@@ -60,16 +60,16 @@ android {
 
     signingConfigs {
         release {
-            storeFile file('../thinksnsplus.jks')
-            storePassword 'thinksnsplus2017'
-            keyAlias 'thinksnsplus'
-            keyPassword 'thinksnsplus2017'
+            storeFile file('../plus.jks')
+            storePassword 'Plus!@#$%'
+            keyAlias 'plus'
+            keyPassword 'Plus!@#$%'
         }
         debug {
-            storeFile file('../thinksnsplus.jks')
-            storePassword 'thinksnsplus2017'
-            keyAlias 'thinksnsplus'
-            keyPassword 'thinksnsplus2017'
+            storeFile file('../plus.jks')
+            storePassword 'Plus!@#$%'
+            keyAlias 'plus'
+            keyPassword 'Plus!@#$%'
         }
     }
 
@@ -165,7 +165,7 @@ greendao {
      * generateTests 设置是否自动生成单元测试。
      * targetGenDirTest 生成的单元测试的根目录。
      */
-    schemaVersion 118 // update on 2018-11-20 10:13:22
+    schemaVersion 1 // update on 2018-11-20 10:13:22
     daoPackage 'com.zhiyicx.thinksnsplus.data.beans'
     generateTests true
     //targetGenDir 'src/main/java'

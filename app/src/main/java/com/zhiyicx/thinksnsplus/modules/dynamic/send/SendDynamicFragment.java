@@ -173,8 +173,8 @@ public class SendDynamicFragment extends TSFragment<SendDynamicContract.Presente
     protected View mTitleUnderLine;
     @BindView(R.id.tv_custom_money)
     protected TextView mCustomMoney;
-    @BindView(R.id.tv_add_topic)
-    protected CombinationButton mTvAddTopic;
+//    @BindView(R.id.tv_add_topic)
+//    protected CombinationButton mTvAddTopic;
     @BindView(R.id.tv_at_user)
     protected CombinationButton mTvAtUser;
     /**
@@ -337,7 +337,7 @@ public class SendDynamicFragment extends TSFragment<SendDynamicContract.Presente
     @Override
     protected void initView(View rootView) {
         mTvToll.setLeftTextSize(getResources().getInteger(R.integer.dynamic_toll_tip_text_size));
-        mTvAddTopic.setLeftTextSize(getResources().getInteger(R.integer.dynamic_toll_tip_text_size));
+//        mTvAddTopic.setLeftTextSize(getResources().getInteger(R.integer.dynamic_toll_tip_text_size));
         mTvAtUser.setLeftTextSize(getResources().getInteger(R.integer.dynamic_toll_tip_text_size));
         handleClipboardContent();
         // 设置右边发布文字监听
@@ -672,7 +672,7 @@ public class SendDynamicFragment extends TSFragment<SendDynamicContract.Presente
                 if (mRvTopicList.getVisibility() == View.GONE) {
                     mRvTopicList.setVisibility(View.VISIBLE);
                     mLineTopicBottom.setVisibility(View.VISIBLE);
-                    mTvAddTopic.setVisibility(View.GONE);
+//                    mTvAddTopic.setVisibility(View.GONE);
                 }
             }
         } else if (requestCode == AtUserListFragment.REQUES_USER) {
@@ -1207,7 +1207,7 @@ public class SendDynamicFragment extends TSFragment<SendDynamicContract.Presente
                         if (mSelectedTopics.size() == 1) {
                             mRvTopicList.setVisibility(View.GONE);
                             mLineTopicBottom.setVisibility(View.GONE);
-                            mTvAddTopic.setVisibility(View.VISIBLE);
+//                            mTvAddTopic.setVisibility(View.VISIBLE);
                         }
                     }
                 });
@@ -1217,11 +1217,11 @@ public class SendDynamicFragment extends TSFragment<SendDynamicContract.Presente
         if (mTopicBean != null) {
             mRvTopicList.setVisibility(View.VISIBLE);
             mLineTopicBottom.setVisibility(View.VISIBLE);
-            mTvAddTopic.setVisibility(View.GONE);
+//            mTvAddTopic.setVisibility(View.GONE);
         } else {
-            mTvAddTopic.setVisibility(View.VISIBLE);
+//            mTvAddTopic.setVisibility(View.VISIBLE);
         }
-        mTvAddTopic.setOnClickListener(view -> SearchTopicActivity.startSearchTopicActivity(mActivity, true));
+//        mTvAddTopic.setOnClickListener(view -> SearchTopicActivity.startSearchTopicActivity(mActivity, true));
         mRvTopicList.setAdapter(mTopicAdapter);
     }
 

@@ -9,6 +9,7 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
@@ -118,7 +119,9 @@ public class SelectDynamicTypeFragmentV2 extends TSFragment<SelectDynamicTypeCon
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        Log.d("底部選單","發布動態產生頁面");
         if (getArguments() != null) {
             mType = getArguments().getInt(TYPE);
             mTopicBean = getArguments().getParcelable(SearchTopicFragment.TOPIC);
@@ -453,14 +456,14 @@ public class SelectDynamicTypeFragmentV2 extends TSFragment<SelectDynamicTypeCon
         } else {
             mTypes.add(new ContentType(R.mipmap.ico_word, getString(R.string.send_words_dynamic)));
             mTypes.add(new ContentType(R.mipmap.ico_potoablum, getString(R.string.send_image_dynamic)));
-            mTypes.add(new ContentType(R.mipmap.ico_contribute, getString(R.string.send_info)));
+//            mTypes.add(new ContentType(R.mipmap.ico_contribute, getString(R.string.send_info)));
             if (unChecked) {
                 mTypes.add(new ContentType(R.mipmap.ico_attendance, getString(R.string.check_in)));
             }
             if(qaOpend) {
-                mTypes.add(new ContentType(R.mipmap.ico_question, getString(R.string.send_question)));
+//                mTypes.add(new ContentType(R.mipmap.ico_question, getString(R.string.send_question)));
             }
-            mTypes.add(new ContentType(R.mipmap.ico_fatie, getString(R.string.send_post)));
+//            mTypes.add(new ContentType(R.mipmap.ico_fatie, getString(R.string.send_post)));
             mTypes.add(new ContentType(R.mipmap.ico_video, getString(R.string.send_vidoe)));
 
             }

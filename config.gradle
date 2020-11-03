@@ -13,12 +13,12 @@ allprojects {
 
 ext {
     //Android
-    applicationId = "com.zhiyicx.thinksnsplus"
+    applicationId = "com.chiehmeng.goingdown"
     minSdkVersion = 21
 
     targetSdkVersion = 27 //targetSdkVersion 28 以及上在Android 9.0 及以上系统上不支持http请求（未加密链接）
-    versionName = "2.3.10" // update on 2019-08-03 14:16:30
-    versionCode = 240 // update on 2019-08-03 14:16:34
+    versionName = "1.0.0.1016" // update on 2019-08-03 14:16:30
+    versionCode = 3 // update on 2019-08-03 14:16:34
     compileSdkVersion = 28
     buildToolsVersion = "28.0.3"
 

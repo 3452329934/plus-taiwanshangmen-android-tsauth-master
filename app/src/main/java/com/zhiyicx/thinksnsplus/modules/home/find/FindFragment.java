@@ -45,10 +45,10 @@ public class FindFragment extends TSFragment {
     AuthRepository mAuthRepository;
 
 
-    @BindView(R.id.find_music)
-    View mMusic;
-    @BindView(R.id.find_qa)
-    CombinationButton mQAButton;
+//    @BindView(R.id.find_music)
+//    View mMusic;
+//    @BindView(R.id.find_qa)
+//    CombinationButton mQAButton;
 
 
     public FindFragment() {
@@ -76,7 +76,7 @@ public class FindFragment extends TSFragment {
 
     @Override
     protected void initView(View rootView) {
-        mMusic.setVisibility(BuildConfig.USE_MUSIC ? View.VISIBLE : View.GONE);
+//        mMusic.setVisibility(BuildConfig.USE_MUSIC ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -98,7 +98,7 @@ public class FindFragment extends TSFragment {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        mQAButton.setVisibility(systemConfigBean != null && !systemConfigBean.getQuestionConfig().isStatus()?View.GONE:View.VISIBLE);
+//        mQAButton.setVisibility(systemConfigBean != null && !systemConfigBean.getQuestionConfig().isStatus()?View.GONE:View.VISIBLE);
 
     }
 
@@ -133,7 +133,7 @@ public class FindFragment extends TSFragment {
     }
 
     @OnClick({R.id.find_info, R.id.find_chanel, R.id.find_active, R.id.find_music, R.id.find_buy,
-            R.id.find_person, R.id.find_nearby, R.id.find_qa, R.id.find_rank, R.id.find_topic})
+            R.id.find_person, R.id.find_nearby,  R.id.find_rank, R.id.find_topic})
     public void onClick(View view) {
         switch (view.getId()) {
                 /*
@@ -200,19 +200,6 @@ public class FindFragment extends TSFragment {
                 startActivity(itFollow);
                 break;
             case R.id.find_nearby:
-                break;
-                /*
-                 问答
-                 */
-            case R.id.find_qa:
-                if (TouristConfig.MORE_QUESTION_LIST_CAN_LOOK || !mAuthRepository.isTourist()) {
-                    Intent intent = new Intent(getActivity(), QA_Activity.class);
-                    Bundle bundle = new Bundle();
-                    intent.putExtras(bundle);
-                    startActivity(intent);
-                } else {
-                    showLoginPop();
-                }
                 break;
                 /*
                  排行榜

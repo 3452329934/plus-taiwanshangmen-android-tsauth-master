@@ -42,8 +42,8 @@ public class QA_Fragment extends TSFragment {
 
     @BindView(R.id.iv_back)
     ImageView mIvBack;
-    @BindView(R.id.rb_qa)
-    RadioButton mRbQa;
+//    @BindView(R.id.rb_qa)
+//    RadioButton mRbQa;
     @BindView(R.id.rb_topic)
     RadioButton mRbTopic;
     @BindView(R.id.rg_qa_type)
@@ -101,20 +101,11 @@ public class QA_Fragment extends TSFragment {
     }
 
     private void initListener() {
-        mRbQa.setChecked(true);
+//        mRbQa.setChecked(true);
         RxRadioGroup.checkedChanges(mRgQaType).subscribe(integer -> {
             FragmentTransaction fragmentTransaction = getChildFragmentManager().beginTransaction();
             hideFragment(fragmentTransaction);
             switch (integer) {
-                case R.id.rb_qa:
-                    if (mQA_ListInfoFragment == null) {
-                        mQA_ListInfoFragment = QA_InfoContainerFragment.getInstance();
-                        fragmentTransaction.add(R.id.qa_fragment_container, mQA_ListInfoFragment);
-                    } else {
-                        fragmentTransaction.show(mQA_ListInfoFragment);
-                    }
-                    mBtnSendDynamic.setVisibility(View.VISIBLE);
-                    break;
                 case R.id.rb_topic:
                     if (mQA_TopicInfoFragment == null) {
                         mQA_TopicInfoFragment = QATopicFragmentContainerFragment.getInstance();

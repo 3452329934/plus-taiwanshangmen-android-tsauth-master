@@ -24,7 +24,7 @@
             android:layout_width="@dimen/headpic_for_list"
             android:layout_height="@dimen/headpic_for_list"
             android:src="@mipmap/ico_message_systerm"
-            app:pressShape="circle"/>
+           />
 
         <TextView
             android:id="@+id/tv_header_notification_name"
@@ -105,7 +105,7 @@
             android:layout_width="@dimen/headpic_for_list"
             android:layout_height="@dimen/headpic_for_list"
             android:src="@mipmap/ico_at"
-            app:pressShape="circle"/>
+            />
 
         <TextView
             android:id="@+id/tv_header_at_name"
@@ -186,7 +186,7 @@
             android:layout_width="@dimen/headpic_for_list"
             android:layout_height="@dimen/headpic_for_list"
             android:src="@mipmap/ico_message_comment"
-            app:pressShape="circle"/>
+           />
 
         <TextView
             android:id="@+id/tv_header_comment_name"
@@ -267,7 +267,7 @@
             android:layout_width="@dimen/headpic_for_list"
             android:layout_height="@dimen/headpic_for_list"
             android:src="@mipmap/ico_message_good"
-            app:pressShape="circle"/>
+           />
 
         <TextView
             android:id="@+id/tv_header_like_name"
@@ -349,7 +349,7 @@
             android:layout_width="@dimen/headpic_for_list"
             android:layout_height="@dimen/headpic_for_list"
             android:src="@mipmap/ico_message_check"
-            app:pressShape="circle"/>
+          />
 
         <TextView
             android:id="@+id/tv_header_review_name"
